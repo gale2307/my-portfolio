@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in_progress
-stopped_at: Plan 04-01 complete — Contact section FadeIn animation added
-last_updated: "2026-06-18T14:00:00.000Z"
+stopped_at: Plan 04-02 complete — SEO metadata, OG image, JSON-LD, and accessibility polish complete; Phase 4 complete
+last_updated: "2026-06-18T00:00:00.000Z"
 progress:
   total_phases: 4
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 10
-  completed_plans: 9
-  percent: 80
+  completed_plans: 10
+  percent: 100
 ---
 
 # Project State
@@ -39,7 +39,7 @@ Next step: Phase 4 — Animation + SEO + Polish.
 | 1 | Foundation + Hero | Complete |
 | 2 | Core Content Sections | Complete |
 | 3 | Social Proof + Contact | Complete |
-| 4 | Animation + SEO + Polish | In progress |
+| 4 | Animation + SEO + Polish | Complete |
 
 ## Plan 01-01 Deliverables (Completed)
 
@@ -116,6 +116,13 @@ All five Phase 1 success criteria verified on the production custom domain URL:
 
 - `components/sections/Contact.tsx` — Added `FadeIn` import and wrapped three content elements with staggered FadeIn delays: description p (delay 0), ContactForm (delay 0.1), social links div (delay 0.2). Section label (`// contact`) remains non-animated, matching the pattern across all other sections.
 - Requirements satisfied: ANIM-01 (Contact section fades in on scroll, once only) and ANIM-02 (prefers-reduced-motion suppressed via FadeIn's useReducedMotion guard)
+
+## Plan 04-02 Deliverables (Completed)
+
+- `app/layout.tsx` — Extended metadata export: `metadataBase` (resolves via `NEXT_PUBLIC_SITE_URL` → `VERCEL_URL` → `localhost:3000`), `openGraph` (type, title, description, image pointing to `/opengraph-image`), `twitter` card. Added JSON-LD `Person` schema via `dangerouslySetInnerHTML` script tag in `<body>`.
+- `app/opengraph-image.tsx` — Edge runtime `ImageResponse` (1200×630); dark background `#0a0a0a`; renders `{'// freelance'}` mono label, `Nicholas William` heading, `Software Engineer` subline.
+- `components/ui/ContactForm.tsx` — Added `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c8964a]` to submit button, matching NavBar focus-visible pattern.
+- Requirements satisfied: SEO-01 (sharing the site URL renders correct OG title, description, image preview)
 
 ## Key Context
 
