@@ -1,4 +1,4 @@
-import { SiGithub, SiLinkedin } from 'react-icons/si';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { ContactForm } from '@/components/ui/ContactForm';
 import { socialLinks } from '@/lib/data/contact';
 
@@ -22,7 +22,7 @@ export function Contact() {
               rel="noopener noreferrer"
               className="text-[#a3a3a3] hover:text-[#f5f5f5] transition-colors duration-200"
             >
-              <SiGithub size={20} />
+              <FaGithub size={20} />
             </a>
             <a
               href={socialLinks.linkedin.url}
@@ -31,7 +31,7 @@ export function Contact() {
               rel="noopener noreferrer"
               className="text-[#a3a3a3] hover:text-[#f5f5f5] transition-colors duration-200"
             >
-              <SiLinkedin size={20} />
+              <FaLinkedin size={20} />
             </a>
           </div>
         </div>
