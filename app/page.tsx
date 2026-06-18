@@ -1,5 +1,6 @@
 import { NavBar } from '@/components/ui/NavBar';
 import { Hero } from '@/components/sections/Hero';
+import { About } from '@/components/sections/About';
 
 export default function Home() {
   return (
@@ -7,7 +8,7 @@ export default function Home() {
       <NavBar />
       <main id="top">
         <Hero />
-        <div id="about" />
+        <About />
         <div id="skills" />
         <div id="work" />
         <div id="contact" />
