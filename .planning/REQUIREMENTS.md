@@ -7,14 +7,14 @@
 
 ### Foundation
 
-- [ ] **FOUND-01**: Project scaffolded with Next.js 15 (App Router), TypeScript, and Tailwind CSS v4
-- [ ] **FOUND-02**: Dark theme configured via CSS custom properties in `globals.css` (no JS class toggle — prevents dark mode flash)
-- [ ] **FOUND-03**: Typography setup with `next/font/google` — fonts self-hosted, zero FOUT
+- [x] **FOUND-01**: Project scaffolded with Next.js 15 (App Router), TypeScript, and Tailwind CSS v4
+- [x] **FOUND-02**: Dark theme configured via CSS custom properties in `globals.css` (no JS class toggle — prevents dark mode flash)
+- [x] **FOUND-03**: Typography setup with `next/font/google` — fonts self-hosted, zero FOUT
 - [ ] **FOUND-04**: Site deployed on Vercel and accessible on a custom domain
 
 ### Hero
 
-- [ ] **HERO-01**: Visitor sees name, one-line tagline, and a single CTA button linking to the contact section within 3 seconds of page load
+- [x] **HERO-01**: Visitor sees name, one-line tagline, and a single CTA button linking to the contact section within 3 seconds of page load
 - [ ] **HERO-02**: Hero content (name, tagline, CTA) animates in with a fade + upward drift on initial page load
 
 ### About
@@ -87,11 +87,11 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUND-01 | Phase 1 | Pending |
-| FOUND-02 | Phase 1 | Pending |
-| FOUND-03 | Phase 1 | Pending |
+| FOUND-01 | Phase 1 | Complete |
+| FOUND-02 | Phase 1 | Complete |
+| FOUND-03 | Phase 1 | Complete |
 | FOUND-04 | Phase 1 | Pending |
-| HERO-01 | Phase 1 | Pending |
+| HERO-01 | Phase 1 | Complete |
 | HERO-02 | Phase 1 | Pending |
 | ABOUT-01 | Phase 2 | Pending |
 | SKILL-01 | Phase 2 | Pending |

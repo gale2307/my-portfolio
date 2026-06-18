@@ -31,7 +31,7 @@
 5. Site is accessible at a custom domain via Vercel
 
 **Plans:**
-1. Scaffold Next.js 15 + TypeScript + Tailwind CSS v4 — configure `globals.css` with dark theme CSS vars, `next/font/google`, and base layout
+1. ~~Scaffold Next.js 15 + TypeScript + Tailwind CSS v4 — configure `globals.css` with dark theme CSS vars, `next/font/google`, and base layout~~ ✓ Complete
 2. Build Hero section component — name, tagline, CTA button, Framer Motion entrance animation
 3. Deploy to Vercel and configure custom domain
 
@@ -93,12 +93,12 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUND-01 | Phase 1 | Pending |
-| FOUND-02 | Phase 1 | Pending |
-| FOUND-03 | Phase 1 | Pending |
-| FOUND-04 | Phase 1 | Pending |
-| HERO-01 | Phase 1 | Pending |
-| HERO-02 | Phase 1 | Pending |
+| FOUND-01 | Phase 1 | Complete (Plan 01-01) |
+| FOUND-02 | Phase 1 | Complete (Plan 01-01) |
+| FOUND-03 | Phase 1 | Complete (Plan 01-01) |
+| FOUND-04 | Phase 1 | Pending (deploy) |
+| HERO-01 | Phase 1 | Complete (Plan 01-01) |
+| HERO-02 | Phase 1 | Pending (Plan 01-02) |
 | ABOUT-01 | Phase 2 | Pending |
 | SKILL-01 | Phase 2 | Pending |
 | SKILL-02 | Phase 2 | Pending |
