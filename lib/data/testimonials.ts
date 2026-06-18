@@ -27,7 +27,7 @@ export const testimonials: TestimonialItem[] = [
   {
     id: 'james-o',
     quote:
-      'Reliable, fast, and genuinely invested in the outcome. One of the best freelance engineers we've worked with.',
+      "Reliable, fast, and genuinely invested in the outcome. One of the best freelance engineers we've worked with.",
     name: 'James O.',
     title: 'Founder',
     company: 'Scalr',
