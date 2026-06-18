@@ -98,12 +98,12 @@ export function ContactForm() {
       </button>
 
       {status === 'success' && (
-        <p className="text-sm text-green-400">
+        <p role="alert" className="text-sm text-green-400">
           Message sent — I&apos;ll be in touch soon.
         </p>
       )}
       {status === 'error' && (
-        <p className="text-sm text-red-400">
+        <p role="alert" className="text-sm text-red-400">
           Something went wrong. Please try again or email me directly.
         </p>
       )}

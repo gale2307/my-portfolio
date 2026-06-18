@@ -31,6 +31,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Nicholas William — Freelance Software Engineer',
     description: 'Freelance software engineer building fast, scalable web products. Available for projects.',
+    images: ['/opengraph-image'],
   },
 };
 
