@@ -50,7 +50,7 @@
 
 **Plans:**
 1. ~~Build About section — prose layout component, FadeIn wrapper, static content~~ ✓ Complete
-2. Build Skills section — icon grid from `lib/data/skills.ts`, stagger animation
+2. ~~Build Skills section — icon grid from `lib/data/skills.ts`, stagger animation~~ ✓ Complete
 3. Build Clients section — logo grid from `lib/data/clients.ts`, grayscale filter
 
 ---
@@ -100,8 +100,8 @@
 | HERO-01 | Phase 1 | Complete (Plan 01-01) |
 | HERO-02 | Phase 1 | Complete (Plan 01-02) |
 | ABOUT-01 | Phase 2 | Complete (Plan 02-01) |
-| SKILL-01 | Phase 2 | Pending |
-| SKILL-02 | Phase 2 | Pending |
+| SKILL-01 | Phase 2 | Complete (Plan 02-02) |
+| SKILL-02 | Phase 2 | Complete (Plan 02-02) |
 | CLIENT-01 | Phase 2 | Pending |
 | TEST-01 | Phase 3 | Pending |
 | TEST-02 | Phase 3 | Pending |
@@ -115,4 +115,4 @@
 
 ---
 *Roadmap created: 2026-06-18*
-*Last updated: 2026-06-18 after Plan 02-01 completion — About section live*
+*Last updated: 2026-06-18 after Plan 02-02 completion — Skills section live*
