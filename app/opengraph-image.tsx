@@ -28,7 +28,7 @@ export default function OgImage() {
             textTransform: 'uppercase',
           }}
         >
-          // freelance
+          {'// freelance'}
         </p>
         <h1
           style={{
