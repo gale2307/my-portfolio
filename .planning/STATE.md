@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in_progress
-stopped_at: Phase 1 Plan 01-01 complete
-last_updated: "2026-06-18T11:10:00.000Z"
+stopped_at: Phase 1 Plan 01-02 complete
+last_updated: "2026-06-18T12:00:00.000Z"
 progress:
   total_phases: 4
   completed_phases: 0
   total_plans: 3
-  completed_plans: 1
-  percent: 8
+  completed_plans: 2
+  percent: 17
 ---
 
 # Project State
@@ -24,9 +24,9 @@ See: .planning/PROJECT.md (updated 2026-06-18)
 
 ## Current Phase
 
-**Phase 1 — Foundation + Hero** — Plan 01-01 (Wave 1: Scaffold + Walking Skeleton) complete.
+**Phase 1 — Foundation + Hero** — Plan 01-02 (Wave 2: Hero Animation + Component Extraction) complete.
 
-Next step: Plan 01-02 (Wave 2: Hero animation with Framer Motion) or deploy to Vercel.
+Next step: Plan 01-03 (Deploy to Vercel and configure custom domain).
 
 ## Phase Status
 
@@ -48,23 +48,29 @@ Next step: Plan 01-02 (Wave 2: Hero animation with Framer Motion) or deploy to V
 - `components/ui/Button.tsx` — ghost/outline amber CTA anchor button
 - `components/ui/NavBar.tsx` — fixed glassmorphism nav with four links + NW logo
 
-## Verification Results (Plan 01-01)
+## Plan 01-02 Deliverables (Completed)
+
+- `lib/data/hero.ts` — `HeroData` interface + `heroData` const (name, tagline)
+- `components/ui/FadeIn.tsx` — `'use client'` Framer Motion `whileInView` wrapper with `viewport={{ once: true }}`
+- `components/sections/Hero.tsx` — `'use client'` Hero with 5-element stagger mount animation (delays 0/100/200/300/450ms), `useReducedMotion()` guard
+- `app/page.tsx` — Updated: inline hero removed, imports `<Hero />`, remains a Server Component
+
+## Verification Results (Plan 01-02)
 
 - `tsc --noEmit`: exit 0 ✓
 - `next build`: exit 0, zero errors ✓
-- Dark background (#1a1a1a) set as standalone CSS on html element ✓
-- No flash prevention relying on JS class toggle ✓
-- Geist font self-hosted via next/font (no googleapis requests) ✓
-- No shadcn / @radix-ui / @headlessui in package.json ✓
-- No tailwind.config.ts with extend/theme keys ✓
-- npm audit: zero high/critical vulnerabilities ✓
+- Five hero elements animate in sequence with stagger on mount ✓
+- `prefers-reduced-motion` guard via `useReducedMotion()` ✓
+- `FadeIn.tsx` uses `viewport={{ once: true }}` — no re-trigger on scroll back ✓
+- `app/page.tsx` has no `'use client'` directive (Server Component) ✓
+- No inline hero markup remaining in `app/page.tsx` ✓
 
 ## Key Context
 
 - Stack: Next.js 15 App Router + TypeScript + Tailwind CSS v4 + Framer Motion
 - Deployment: Vercel + custom domain
 - Content: Static TypeScript data files (no CMS)
-- Animation: FadeIn wrapper pattern — Client Component wrapping Server Component children
+- Animation: Hero uses mount animation (`animate` prop); sections use `FadeIn` (`whileInView` + `once: true`)
 - Email: Resend API via Route Handler (key must NOT use NEXT_PUBLIC_ prefix)
 - Dark theme: CSS vars in globals.css on `<html>` — never via JS class toggle
 
@@ -75,8 +81,10 @@ Next step: Plan 01-02 (Wave 2: Hero animation with Framer Motion) or deploy to V
 | 2026-06-18 | No projects section | Client logos + testimonials make the case |
 | 2026-06-18 | Dark theme only | Intentional aesthetic identity |
 | 2026-06-18 | Static content in lib/data/ | Simple, no CMS overhead for v1 |
-| 2026-06-18 | FadeIn wrapper pattern | Keeps section RSCs as Server Components |
+| 2026-06-18 | FadeIn wrapper pattern | Keeps section RSCs as Server Components (Phase 2+ sections) |
 | 2026-06-18 | `{"// freelance"}` JSX string | ESLint react/jsx-no-comment-textnodes requires // wrapped in JSX expression |
+| 2026-06-18 | Hero.tsx is 'use client' | Uses useReducedMotion() and motion.* directly — must be a Client Component |
+| 2026-06-18 | Hero uses animate prop, not whileInView | Hero is always above the fold — mount animation is correct, not scroll-triggered |
 
 ---
 *State initialized: 2026-06-18*
@@ -84,6 +92,6 @@ Next step: Plan 01-02 (Wave 2: Hero animation with Framer Motion) or deploy to V
 
 ## Session
 
-**Last session:** 2026-06-18T11:10:00.000Z
-**Stopped at:** Plan 01-01 complete — walking skeleton verified
-**Resume file:** .planning/phases/01-foundation-hero/01-01-SUMMARY.md
+**Last session:** 2026-06-18T12:00:00.000Z
+**Stopped at:** Plan 01-02 complete — Hero animation and component extraction verified
+**Resume file:** .planning/phases/01-foundation-hero/01-02-SUMMARY.md

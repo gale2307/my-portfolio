@@ -32,7 +32,7 @@
 
 **Plans:**
 1. ~~Scaffold Next.js 15 + TypeScript + Tailwind CSS v4 — configure `globals.css` with dark theme CSS vars, `next/font/google`, and base layout~~ ✓ Complete
-2. Build Hero section component — name, tagline, CTA button, Framer Motion entrance animation
+2. ~~Build Hero section component — name, tagline, CTA button, Framer Motion entrance animation~~ ✓ Complete
 3. Deploy to Vercel and configure custom domain
 
 ---
@@ -98,7 +98,7 @@
 | FOUND-03 | Phase 1 | Complete (Plan 01-01) |
 | FOUND-04 | Phase 1 | Pending (deploy) |
 | HERO-01 | Phase 1 | Complete (Plan 01-01) |
-| HERO-02 | Phase 1 | Pending (Plan 01-02) |
+| HERO-02 | Phase 1 | Complete (Plan 01-02) |
 | ABOUT-01 | Phase 2 | Pending |
 | SKILL-01 | Phase 2 | Pending |
 | SKILL-02 | Phase 2 | Pending |
@@ -115,4 +115,4 @@
 
 ---
 *Roadmap created: 2026-06-18*
-*Last updated: 2026-06-18 after initial creation*
+*Last updated: 2026-06-18 after Plan 01-02 completion*
