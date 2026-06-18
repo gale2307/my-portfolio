@@ -18,7 +18,7 @@
 
 ---
 
-### Phase 1: Foundation + Hero
+### Phase 1: Foundation + Hero — COMPLETE
 **Goal:** Get the project scaffolded, dark theme configured, and the hero section live on a custom Vercel domain. End state: share a URL and see the dark typographic hero.
 **Mode:** mvp
 **Requirements:** FOUND-01, FOUND-02, FOUND-03, FOUND-04, HERO-01, HERO-02
@@ -33,7 +33,7 @@
 **Plans:**
 1. ~~Scaffold Next.js 15 + TypeScript + Tailwind CSS v4 — configure `globals.css` with dark theme CSS vars, `next/font/google`, and base layout~~ ✓ Complete
 2. ~~Build Hero section component — name, tagline, CTA button, Framer Motion entrance animation~~ ✓ Complete
-3. Deploy to Vercel and configure custom domain
+3. ~~Deploy to Vercel and configure custom domain~~ ✓ Complete
 
 ---
 
@@ -96,7 +96,7 @@
 | FOUND-01 | Phase 1 | Complete (Plan 01-01) |
 | FOUND-02 | Phase 1 | Complete (Plan 01-01) |
 | FOUND-03 | Phase 1 | Complete (Plan 01-01) |
-| FOUND-04 | Phase 1 | Pending (deploy) |
+| FOUND-04 | Phase 1 | Complete (Plan 01-03) |
 | HERO-01 | Phase 1 | Complete (Plan 01-01) |
 | HERO-02 | Phase 1 | Complete (Plan 01-02) |
 | ABOUT-01 | Phase 2 | Pending |
@@ -115,4 +115,4 @@
 
 ---
 *Roadmap created: 2026-06-18*
-*Last updated: 2026-06-18 after Plan 01-02 completion*
+*Last updated: 2026-06-18 after Phase 1 completion — site live in production at custom domain*
