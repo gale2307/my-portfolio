@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nicholas Willian — Freelance Software Engineer",
+  title: "Nicholas William — Freelance Software Engineer",
   description:
     "Freelance software engineer building fast, scalable web products. Available for projects.",
 };

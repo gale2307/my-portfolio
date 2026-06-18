@@ -11,7 +11,7 @@ completed: 2026-06-18
 
 Three files created/modified to implement the About section:
 
-1. **`lib/data/about.ts`** — `AboutData` interface + `aboutData` const with a 3-sentence prose bio for Nicholas Willian.
+1. **`lib/data/about.ts`** — `AboutData` interface + `aboutData` const with a 3-sentence prose bio for Nicholas William.
 2. **`components/sections/About.tsx`** — Server Component (no `'use client'`). Renders `id="about"` section with `py-24` vertical padding, `// about` mono label, and bio prose wrapped in `<FadeIn>` for scroll-triggered animation.
 3. **`app/page.tsx`** — Updated to import and render `<About />` after `<Hero />`, replacing the empty `<div id="about" />` stub.
 

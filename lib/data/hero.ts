@@ -4,6 +4,6 @@ export interface HeroData {
 }
 
 export const heroData: HeroData = {
-  name: 'Nicholas Willian',
+  name: 'Nicholas William',
   tagline: 'Building fast, scalable web products for ambitious teams.',
 };
