@@ -13,7 +13,7 @@ export default function Home() {
           <div className="max-w-5xl mx-auto px-6">
             <div className="max-w-2xl">
               <p className="font-mono text-xs text-[#a3a3a3] tracking-widest uppercase mb-6">
-                // freelance
+                {"// freelance"}
               </p>
               <h1
                 className="font-bold text-[#f5f5f5] mb-2"
