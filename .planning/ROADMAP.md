@@ -14,7 +14,7 @@
 | 1 | Foundation + Hero | Live dark site with hero visible | FOUND-01, FOUND-02, FOUND-03, FOUND-04, HERO-01, HERO-02 | 5 |
 | 2 | Core Content Sections | About, Skills, Client Logos live | ABOUT-01, SKILL-01, SKILL-02, CLIENT-01 | 4 |
 | 3 | Social Proof + Contact | 2/2 | Complete   | 2026-06-18 |
-| 4 | Animation + SEO + Polish | 1/2 | In Progress|  |
+| 4 | Animation + SEO + Polish | 2/2 | Complete   | 2026-06-18 |
 
 ---
 
@@ -104,7 +104,10 @@
 **Plans:**
 
 - [x] 04-01-PLAN.md
-- [ ] 04-02-PLAN.md
+
+2/2 plans complete
+
+- [x] 04-02-PLAN.md
 
 1/2 plans executed
 
