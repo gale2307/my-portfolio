@@ -49,7 +49,7 @@
 4. Client logos section renders grayscale logos in a consistent grid
 
 **Plans:**
-1. Build About section — prose layout component, FadeIn wrapper, static content
+1. ~~Build About section — prose layout component, FadeIn wrapper, static content~~ ✓ Complete
 2. Build Skills section — icon grid from `lib/data/skills.ts`, stagger animation
 3. Build Clients section — logo grid from `lib/data/clients.ts`, grayscale filter
 
@@ -99,7 +99,7 @@
 | FOUND-04 | Phase 1 | Complete (Plan 01-03) |
 | HERO-01 | Phase 1 | Complete (Plan 01-01) |
 | HERO-02 | Phase 1 | Complete (Plan 01-02) |
-| ABOUT-01 | Phase 2 | Pending |
+| ABOUT-01 | Phase 2 | Complete (Plan 02-01) |
 | SKILL-01 | Phase 2 | Pending |
 | SKILL-02 | Phase 2 | Pending |
 | CLIENT-01 | Phase 2 | Pending |
@@ -115,4 +115,4 @@
 
 ---
 *Roadmap created: 2026-06-18*
-*Last updated: 2026-06-18 after Phase 1 completion — site live in production at custom domain*
+*Last updated: 2026-06-18 after Plan 02-01 completion — About section live*

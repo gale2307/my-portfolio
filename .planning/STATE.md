@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in_progress
-stopped_at: Phase 1 complete — site live in production at custom domain
-last_updated: "2026-06-18T00:00:00.000Z"
+stopped_at: Plan 02-01 complete — About section live
+last_updated: "2026-06-18T13:00:00.000Z"
 progress:
   total_phases: 4
   completed_phases: 1
-  total_plans: 3
-  completed_plans: 3
-  percent: 25
+  total_plans: 6
+  completed_plans: 4
+  percent: 33
 ---
 
 # Project State
@@ -20,20 +20,22 @@ progress:
 See: .planning/PROJECT.md (updated 2026-06-18)
 
 **Core value:** A prospective client lands on the site and knows within seconds whether to reach out — the portfolio closes deals, not just impressions.
-**Current focus:** Phase 02 — Core Content Sections (next)
+**Current focus:** Phase 02 — core-content-sections
 
 ## Current Phase
 
 **Phase 1 — Foundation + Hero** — Complete. Site is live in production at the custom domain with HTTPS. All three plans and all six Phase 1 requirements satisfied.
 
-Next step: Phase 2 — Core Content Sections (About, Skills, Clients).
+**Phase 2 — Core Content Sections** — In progress. Plan 02-01 (About section) complete.
+
+Next step: Plan 02-02 — Skills section.
 
 ## Phase Status
 
 | Phase | Name | Status |
 |-------|------|--------|
 | 1 | Foundation + Hero | Complete |
-| 2 | Core Content Sections | Not started |
+| 2 | Core Content Sections | In progress (1/3 plans complete) |
 | 3 | Social Proof + Contact | Not started |
 | 4 | Animation + SEO + Polish | Not started |
 
@@ -65,12 +67,19 @@ Next step: Phase 2 — Core Content Sections (About, Skills, Clients).
 ## Verification Results (Plan 01-03 / Phase 1 Sign-off)
 
 All five Phase 1 success criteria verified on the production custom domain URL:
+
 - TypeScript clean build: `tsc --noEmit` exit 0; Vercel build log zero errors ✓
 - Dark background, no flash on hard refresh ✓
 - Hero section content: mono label, name, role, tagline, amber CTA ✓
 - Hero entrance animation: 5-element stagger (0/100/200/300/450ms) plays on first load ✓
 - Custom domain accessible via HTTPS with valid SSL certificate ✓
 - Zero DevTools console errors at production URL ✓
+
+## Plan 02-01 Deliverables (Completed)
+
+- `lib/data/about.ts` — `AboutData` interface + `aboutData` const (3-sentence prose bio)
+- `components/sections/About.tsx` — Server Component; `// about` mono label, prose bio wrapped in `<FadeIn>`, `py-24` section spacing
+- `app/page.tsx` — Updated: `<About />` rendered after `<Hero />`; empty `#about` stub removed
 
 ## Key Context
 
@@ -99,6 +108,6 @@ All five Phase 1 success criteria verified on the production custom domain URL:
 
 ## Session
 
-**Last session:** 2026-06-18T00:00:00.000Z
-**Stopped at:** Phase 1 complete — site live in production, custom domain with HTTPS confirmed by engineer
-**Resume file:** .planning/phases/01-foundation-hero/01-03-SUMMARY.md
+**Last session:** 2026-06-18T13:00:00.000Z
+**Stopped at:** Plan 02-01 complete — About section implemented; tsc and next build pass
+**Resume file:** .planning/phases/02-core-content-sections/02-01-SUMMARY.md
