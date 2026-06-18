@@ -15,9 +15,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nicholas William — Freelance Software Engineer",
-  description:
-    "Freelance software engineer building fast, scalable web products. Available for projects.",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000')
+  ),
+  title: 'Nicholas William — Freelance Software Engineer',
+  description: 'Freelance software engineer building fast, scalable web products. Available for projects.',
+  openGraph: {
+    type: 'website',
+    title: 'Nicholas William — Freelance Software Engineer',
+    description: 'Freelance software engineer building fast, scalable web products. Available for projects.',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Nicholas William — Freelance Software Engineer' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Nicholas William — Freelance Software Engineer',
+    description: 'Freelance software engineer building fast, scalable web products. Available for projects.',
+  },
 };
 
 export default function RootLayout({
@@ -27,7 +41,25 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'Nicholas William',
+              jobTitle: 'Freelance Software Engineer',
+              description: 'Freelance software engineer building fast, scalable web products.',
+              sameAs: [
+                'https://github.com/nichowil',
+                'https://linkedin.com/in/nichowil',
+              ],
+            }),
+          }}
+        />
+      </body>
     </html>
   );
 }
