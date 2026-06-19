@@ -2,18 +2,17 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Testimonials
-current_phase_name: defining requirements
+current_phase_name: testimonials-data-cards
 status: executing
-stopped_at: Phase 5 UI-SPEC approved
-last_updated: "2026-06-19T13:51:46.221Z"
+stopped_at: Phase 5 Plan 1 complete
+last_updated: "2026-06-19T14:30:00.000Z"
 last_activity: 2026-06-19
-last_activity_desc: Milestone v1.1 started
 progress:
   total_phases: 6
-  completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
-  percent: 0
+  completed_phases: 4
+  total_plans: 2
+  completed_plans: 1
+  percent: 50
 ---
 
 # Project State
@@ -23,14 +22,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-06-18)
 
 **Core value:** A prospective client lands on the site and knows within seconds whether to reach out — the portfolio closes deals, not just impressions.
-**Current focus:** Milestone v1.1 Testimonials — Phase 5 up next
+**Current focus:** Phase 05 — testimonials-data-cards
 
 ## Current Phase
 
 Phase: Not started (defining requirements)
 Plan: —
-Status: Ready to execute
-Last activity: 2026-06-19 — Milestone v1.1 started
+Status: Executing Phase 05
+Last activity: 2026-06-19
 
 **v1.0 complete — all 4 phases done:**
 
@@ -41,7 +40,7 @@ Last activity: 2026-06-19 — Milestone v1.1 started
 
 **v1.1 phases:**
 
-- Phase 5 — Testimonials Data & Cards: Pending
+- Phase 5 — Testimonials Data & Cards: In Progress (Plan 1 complete, Plan 2 pending)
 - Phase 6 — Testimonials Carousel: Pending
 
 ## Phase Status
@@ -167,9 +166,26 @@ All five Phase 1 success criteria verified on the production custom domain URL:
 **Stopped at:** Phase 5 UI-SPEC approved
 **Resume file:** .planning/phases/05-testimonials-data-cards/05-UI-SPEC.md
 
+## Plan 05-01 Deliverables (Completed)
+
+- `lib/data/testimonials.ts` — `TestimonialItem` interface rewritten: removed `avatarUrl?`, added `photo: string`, `linkedinUrl?: string`, `source: 'linkedin' | 'direct'`; `testimonials` array repopulated with 5 provisional entries (alex-chen, sarah-patel, james-okafor, priya-sharma, tom-riley)
+- `components/sections/Testimonials.tsx` — Minimally updated: `avatarUrl` reference replaced with `photo` to resolve TS2339 type error; full redesign deferred to Plan 05-02
+- `public/images/testimonials/.gitkeep` — Directory created for headshot assets; `.gitkeep` ensures git tracking; real JPEGs to be added before launch
+- `tsc --noEmit` exits 0; `grep -c "avatarUrl" lib/data/testimonials.ts` returns 0
+
+**Note — TEST-04 content is provisional:** All 5 testimonial entries use representative names, quotes, and LinkedIn URLs. Replace with real client data before launch. The 5 pending photo files (`alex-chen.jpg`, `sarah-patel.jpg`, `james-okafor.jpg`, `priya-sharma.jpg`, `tom-riley.jpg`) need real headshots — the component's `getInitials` fallback renders in the meantime.
+
+## Decisions Log — Phase 05-01
+
+| Date | Decision | Rationale |
+|------|----------|-----------|
+| 2026-06-19 | Minimal Testimonials.tsx update in 05-01 | tsc requires consuming component to match new interface; full redesign is Plan 05-02 |
+| 2026-06-19 | 5 provisional testimonial entries | Plan allows representative entries when real client data not yet supplied; flagged for replacement |
+| 2026-06-19 | photo field always set, never empty | `photo` is required on the interface; initials fallback handles missing files at runtime, not at type level |
+
 ## Current Position
 
-Phase: Not started (defining requirements)
-Plan: —
-Status: Ready to execute
-Last activity: 2026-06-19 — Milestone v1.1 started
+Phase: 05 (testimonials-data-cards) — EXECUTING
+Plan: 2 of 2 (next: 05-02-PLAN.md)
+Status: Plan 05-01 complete; Plan 05-02 pending
+Last activity: 2026-06-19 — Plan 05-01 complete

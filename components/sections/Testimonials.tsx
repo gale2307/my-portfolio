@@ -22,9 +22,9 @@ export function Testimonials() {
                   &ldquo;{t.quote}&rdquo;
                 </p>
                 <div className="flex items-center gap-3 pt-4 border-t border-white/[0.08]">
-                  {t.avatarUrl ? (
+                  {t.photo ? (
                     <img
-                      src={t.avatarUrl}
+                      src={t.photo}
                       alt={t.name}
                       className="w-10 h-10 rounded-full object-cover shrink-0"
                     />
