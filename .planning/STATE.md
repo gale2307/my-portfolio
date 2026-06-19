@@ -20,17 +20,24 @@ progress:
 See: .planning/PROJECT.md (updated 2026-06-18)
 
 **Core value:** A prospective client lands on the site and knows within seconds whether to reach out — the portfolio closes deals, not just impressions.
-**Current focus:** Phase 04 — Animation + SEO + Polish
+**Current focus:** Milestone v1.1 Testimonials — Phase 5 up next
 
 ## Current Phase
 
-**Phase 1 — Foundation + Hero** — Complete. Site is live in production at the custom domain with HTTPS. All three plans and all six Phase 1 requirements satisfied.
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-06-19 — Milestone v1.1 started
 
-**Phase 2 — Core Content Sections** — Complete. All three plans (02-01 About, 02-02 Skills, 02-03 Clients) complete.
+**v1.0 complete — all 4 phases done:**
+- Phase 1 — Foundation + Hero: Complete
+- Phase 2 — Core Content Sections: Complete
+- Phase 3 — Social Proof + Contact: Complete
+- Phase 4 — Animation + SEO + Polish: Complete
 
-**Phase 3 — Social Proof + Contact** — Complete. Both plans (03-01 Testimonials, 03-02 Contact) complete. Testimonials section with cards, Contact form with Resend integration, and GitHub/LinkedIn social links are all live.
-
-Next step: Phase 4 — Animation + SEO + Polish.
+**v1.1 phases:**
+- Phase 5 — Testimonials Data & Cards: Pending
+- Phase 6 — Testimonials Carousel: Pending
 
 ## Phase Status
 

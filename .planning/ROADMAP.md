@@ -2,8 +2,8 @@
 
 **Project:** Personal Portfolio — Freelance Software Engineer
 **Mode:** Vertical MVP — each phase delivers a visible, deployable increment
-**Granularity:** Coarse (4 phases)
-**Requirements covered:** 17 / 17 ✓
+**Granularity:** Coarse (6 phases)
+**Requirements covered:** 23 / 23 ✓
 
 ---
 
@@ -15,6 +15,8 @@
 | 2 | Core Content Sections | About, Skills, Client Logos live | ABOUT-01, SKILL-01, SKILL-02, CLIENT-01 | 4 |
 | 3 | Social Proof + Contact | 2/2 | Complete   | 2026-06-18 |
 | 4 | Animation + SEO + Polish | 2/2 | Complete   | 2026-06-18 |
+| 5 | Testimonials — Data & Cards | Real data, photos, LinkedIn badges live | TEST-03, TEST-04, TEST-05, TEST-06 | 4 |
+| 6 | Testimonials — Carousel | Carousel layout with accessible controls | TEST-07, TEST-08 | 3 |
 
 ---
 
@@ -115,6 +117,44 @@
 
 ---
 
+### Phase 5: Testimonials — Data & Cards
+
+**Goal:** Real client testimonials are live on the site — with profile photos and LinkedIn verification badges — replacing all placeholder content.
+**Mode:** mvp
+**Requirements:** TEST-03, TEST-04, TEST-05, TEST-06
+
+**Success Criteria:**
+
+1. `TestimonialItem` TypeScript interface has `photo`, `linkedinUrl` (optional), and `source` fields with no type errors
+2. Testimonials section displays 4–6 real entries with actual client names, titles, companies, and quote text
+3. Each card shows a circular profile headshot rendered via `next/image` (no initials avatars)
+4. LinkedIn-sourced cards display a LinkedIn icon badge and a "View on LinkedIn" link that opens the recommendation
+
+**Plans:**
+
+1. Extend `TestimonialItem` interface, add photo/linkedinUrl/source fields, populate `lib/data/testimonials.ts` with real client data, add headshot images to `/public/images/testimonials/`
+2. Update `components/sections/Testimonials.tsx` card design — circular `next/image` headshot, LinkedIn badge + link for `source: 'linkedin'` entries
+
+---
+
+### Phase 6: Testimonials — Carousel
+
+**Goal:** The testimonials section uses a carousel layout with keyboard-accessible prev/next controls, replacing the static grid.
+**Mode:** mvp
+**Requirements:** TEST-07, TEST-08
+
+**Success Criteria:**
+
+1. Testimonials display in a carousel/slider — one card (or a peek of the next) visible at a time
+2. Prev/next buttons are visible, labelled with aria-labels, and advance the carousel
+3. Carousel responds to keyboard navigation (Tab to buttons, Enter/Space to activate)
+
+**Plans:**
+
+1. Install carousel library (e.g. Embla Carousel), convert `Testimonials.tsx` from grid to carousel, add accessible prev/next controls
+
+---
+
 ## Requirement Coverage
 
 | Requirement | Phase | Status |
@@ -129,16 +169,22 @@
 | SKILL-01 | Phase 2 | Complete (Plan 02-02) |
 | SKILL-02 | Phase 2 | Complete (Plan 02-02) |
 | CLIENT-01 | Phase 2 | Complete (Plan 02-03) |
-| TEST-01 | Phase 3 | Pending |
-| TEST-02 | Phase 3 | Pending |
-| CONT-01 | Phase 3 | Pending |
-| CONT-02 | Phase 3 | Pending |
-| ANIM-01 | Phase 4 | Pending |
-| ANIM-02 | Phase 4 | Pending |
-| SEO-01 | Phase 4 | Pending |
+| TEST-01 | Phase 3 | Complete (Plan 03-01) |
+| TEST-02 | Phase 3 | Complete (Plan 03-01) |
+| CONT-01 | Phase 3 | Complete (Plan 03-02) |
+| CONT-02 | Phase 3 | Complete (Plan 03-02) |
+| ANIM-01 | Phase 4 | Complete (Plan 04-01) |
+| ANIM-02 | Phase 4 | Complete (Plan 04-01) |
+| SEO-01 | Phase 4 | Complete (Plan 04-02) |
+| TEST-03 | Phase 5 | Pending |
+| TEST-04 | Phase 5 | Pending |
+| TEST-05 | Phase 5 | Pending |
+| TEST-06 | Phase 5 | Pending |
+| TEST-07 | Phase 6 | Pending |
+| TEST-08 | Phase 6 | Pending |
 
-**Coverage:** 17 / 17 ✓
+**Coverage:** 23 / 23 ✓
 
 ---
 *Roadmap created: 2026-06-18*
-*Last updated: 2026-06-18 after Plan 02-03 completion — Phase 2 complete; Clients section live*
+*Last updated: 2026-06-19 — v1.1 Testimonials phases 5–6 added*
