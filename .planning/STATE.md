@@ -3,16 +3,16 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Testimonials
 current_phase_name: testimonials-data-cards
-status: executing
-stopped_at: Phase 5 Plan 1 complete
-last_updated: "2026-06-19T14:30:00.000Z"
+status: phase_complete
+stopped_at: Phase 5 Plan 2 complete
+last_updated: "2026-06-19T15:00:00.000Z"
 last_activity: 2026-06-19
 progress:
   total_phases: 6
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 2
-  completed_plans: 1
-  percent: 50
+  completed_plans: 2
+  percent: 83
 ---
 
 # Project State
@@ -40,7 +40,7 @@ Last activity: 2026-06-19
 
 **v1.1 phases:**
 
-- Phase 5 — Testimonials Data & Cards: In Progress (Plan 1 complete, Plan 2 pending)
+- Phase 5 — Testimonials Data & Cards: Complete (both plans done)
 - Phase 6 — Testimonials Carousel: Pending
 
 ## Phase Status
@@ -183,9 +183,21 @@ All five Phase 1 success criteria verified on the production custom domain URL:
 | 2026-06-19 | 5 provisional testimonial entries | Plan allows representative entries when real client data not yet supplied; flagged for replacement |
 | 2026-06-19 | photo field always set, never empty | `photo` is required on the interface; initials fallback handles missing files at runtime, not at type level |
 
+## Plan 05-02 Deliverables (Completed)
+
+- `components/sections/Testimonials.tsx` — Added `import Image from 'next/image'` and `import { FaLinkedin } from 'react-icons/fa'`; swapped `<img>` for `<Image width={40} height={40} rounded-full>`; changed name wrapper to `min-w-0 flex-1`; added conditional LinkedIn badge anchor (ml-auto, icon-only, aria-label, target=_blank, rel=noopener noreferrer) gated on `source === 'linkedin' && linkedinUrl`
+- `tsc --noEmit` exits 0; `next build` passes; `grep -c "avatarUrl"` returns 0; `grep -c "'use client'"` returns 0
+
+## Decisions Log — Phase 05-02
+
+| Date | Decision | Rationale |
+|------|----------|-----------|
+| 2026-06-19 | FaLinkedin from react-icons/fa | SiLinkedin does not exist in react-icons v5 (same finding as Plan 03-02 Contact.tsx) |
+| 2026-06-19 | Badge is icon-only with aria-label | Visual minimalism; accessibility satisfied via aria-label per UI-SPEC |
+
 ## Current Position
 
-Phase: 05 (testimonials-data-cards) — EXECUTING
-Plan: 2 of 2 (next: 05-02-PLAN.md)
-Status: Plan 05-01 complete; Plan 05-02 pending
-Last activity: 2026-06-19 — Plan 05-01 complete
+Phase: 05 (testimonials-data-cards) — COMPLETE
+Plan: 2 of 2 — both done
+Status: Phase 05 fully complete; next: Phase 06 (Testimonials Carousel)
+Last activity: 2026-06-19 — Plan 05-02 complete
