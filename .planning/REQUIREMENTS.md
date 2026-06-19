@@ -53,13 +53,13 @@
 
 ### Testimonials — Data & Content
 
-- [ ] **TEST-03**: `TestimonialItem` interface extended with `photo` (image path), `linkedinUrl` (optional), and `source` (`'linkedin' | 'direct'`) fields
-- [ ] **TEST-04**: Testimonials data file populated with 4–6 real client entries (quote, name, title, company, photo path, LinkedIn URL)
+- [x] **TEST-03**: `TestimonialItem` interface extended with `photo` (image path), `linkedinUrl` (optional), and `source` (`'linkedin' | 'direct'`) fields
+- [x] **TEST-04**: Testimonials data file populated with 4–6 real client entries (quote, name, title, company, photo path, LinkedIn URL)
 
 ### Testimonials — Card Design
 
-- [ ] **TEST-05**: Each card displays a real profile headshot as a circular image (via `next/image`) replacing the initials avatar
-- [ ] **TEST-06**: Cards sourced from LinkedIn display a LinkedIn badge icon + "View on LinkedIn" link
+- [x] **TEST-05**: Each card displays a real profile headshot as a circular image (via `next/image`) replacing the initials avatar
+- [x] **TEST-06**: Cards sourced from LinkedIn display a LinkedIn badge icon + "View on LinkedIn" link
 
 ### Testimonials — Layout
 
@@ -124,14 +124,15 @@
 | ANIM-02 | Phase 4 | Pending |
 | SEO-01 | Phase 4 | Pending |
 
-| TEST-03 | Phase 5 | Pending |
-| TEST-04 | Phase 5 | Pending |
-| TEST-05 | Phase 5 | Pending |
-| TEST-06 | Phase 5 | Pending |
+| TEST-03 | Phase 5 | Complete |
+| TEST-04 | Phase 5 | Complete |
+| TEST-05 | Phase 5 | Complete |
+| TEST-06 | Phase 5 | Complete |
 | TEST-07 | Phase 5 | Pending |
 | TEST-08 | Phase 5 | Pending |
 
 **Coverage:**
+
 - v1 requirements: 17 total
 - v1.1 requirements: 6 total
 - Mapped to phases: 23

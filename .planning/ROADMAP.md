@@ -15,7 +15,7 @@
 | 2 | Core Content Sections | About, Skills, Client Logos live | ABOUT-01, SKILL-01, SKILL-02, CLIENT-01 | 4 |
 | 3 | Social Proof + Contact | 2/2 | Complete   | 2026-06-18 |
 | 4 | Animation + SEO + Polish | 2/2 | Complete   | 2026-06-18 |
-| 5 | Testimonials — Data & Cards | Real data, photos, LinkedIn badges live | TEST-03, TEST-04, TEST-05, TEST-06 | 4 |
+| 5 | Testimonials — Data & Cards | 2/2 | Complete    | 2026-06-19 |
 | 6 | Testimonials — Carousel | Carousel layout with accessible controls | TEST-07, TEST-08 | 3 |
 
 ---
@@ -132,7 +132,8 @@
 
 **Plans:**
 
-1. Extend `TestimonialItem` interface, add photo/linkedinUrl/source fields, populate `lib/data/testimonials.ts` with real client data, add headshot images to `/public/images/testimonials/`
+2/2 plans complete
+
 2. Update `components/sections/Testimonials.tsx` card design — circular `next/image` headshot, LinkedIn badge + link for `source: 'linkedin'` entries
 
 ---
