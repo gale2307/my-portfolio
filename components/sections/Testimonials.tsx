@@ -13,35 +13,35 @@ export function Testimonials() {
   return (
     <section id="testimonials" className="py-24">
       <div className="max-w-5xl mx-auto px-6">
-        <p className="font-mono text-xs text-[#a3a3a3] tracking-widest uppercase mb-10">
+        <p className="font-mono text-xs text-[#555555] tracking-widest uppercase mb-10">
           {'// testimonials'}
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {testimonials.map((t, index) => (
             <FadeIn key={t.id} delay={index * 0.1}>
-              <div className="bg-[#1e1e1e] border border-white/[0.08] rounded-lg p-6 flex flex-col gap-4 h-full">
-                <p className="text-[#d4d4d4] text-sm leading-relaxed italic flex-1">
+              <div className="bg-[#111111] border border-white/[0.07] rounded-sm p-6 flex flex-col gap-4 h-full">
+                <p className="text-[#c0c0c0] text-sm leading-relaxed italic flex-1">
                   &ldquo;{t.quote}&rdquo;
                 </p>
-                <div className="flex items-center gap-3 pt-4 border-t border-white/[0.08]">
+                <div className="flex items-center gap-3 pt-4 border-t border-white/[0.07]">
                   {t.photo ? (
                     <Image
                       src={t.photo}
                       alt={t.name}
-                      width={40}
-                      height={40}
-                      className="w-10 h-10 rounded-full object-cover shrink-0"
+                      width={36}
+                      height={36}
+                      className="w-9 h-9 rounded-full object-cover shrink-0"
                     />
                   ) : (
-                    <div className="w-10 h-10 rounded-full bg-[#2a2a2a] border border-white/10 flex items-center justify-center shrink-0">
-                      <span className="font-mono text-xs text-[#a3a3a3]">
+                    <div className="w-9 h-9 rounded-full bg-[#1a1a1a] border border-white/[0.08] flex items-center justify-center shrink-0">
+                      <span className="font-mono text-xs text-[#555555]">
                         {getInitials(t.name)}
                       </span>
                     </div>
                   )}
                   <div className="min-w-0 flex-1">
-                    <p className="font-medium text-[#f5f5f5] text-sm truncate">{t.name}</p>
-                    <p className="text-xs text-[#a3a3a3] font-mono truncate">
+                    <p className="font-medium text-[#e8e8e8] text-sm truncate">{t.name}</p>
+                    <p className="text-xs text-[#555555] font-mono truncate">
                       {t.title} · {t.company}
                     </p>
                   </div>
@@ -51,9 +51,9 @@ export function Testimonials() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="View on LinkedIn"
-                      className="ml-auto text-[#a3a3a3] hover:text-[#f5f5f5] transition-colors duration-150 shrink-0"
+                      className="ml-auto text-[#555555] hover:text-[#e8e8e8] transition-colors duration-150 shrink-0"
                     >
-                      <FaLinkedin size={16} />
+                      <FaLinkedin size={15} />
                     </a>
                   )}
                 </div>

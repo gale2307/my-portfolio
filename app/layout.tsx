@@ -1,17 +1,17 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { IBM_Plex_Sans, JetBrains_Mono } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
 
-const geist = Geist({
+const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
-  variable: "--font-geist",
-  weight: ["300", "400", "500", "700"],
+  variable: "--font-ibm-plex-sans",
+  weight: ["300", "400", "500", "600"],
 });
 
-const geistMono = Geist_Mono({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-geist-mono",
-  weight: ["400"],
+  variable: "--font-jetbrains-mono",
+  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -41,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${ibmPlexSans.variable} ${jetbrainsMono.variable}`}>
       <body>
         {children}
         <script

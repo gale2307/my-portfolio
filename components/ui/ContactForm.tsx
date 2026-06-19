@@ -5,9 +5,9 @@ import { useState } from 'react';
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
 const inputClass =
-  'w-full bg-[#1e1e1e] border border-white/10 rounded-md px-4 py-3 text-sm text-[#f5f5f5] placeholder:text-[#525252] focus:outline-none focus:ring-1 focus:ring-[#c8964a] transition-shadow';
+  'w-full bg-[#111111] border border-white/[0.07] rounded-sm px-4 py-3 text-sm text-[#e8e8e8] placeholder:text-[#444444] font-mono focus:outline-none focus:ring-1 focus:ring-[#00d9b8]/50 transition-shadow';
 
-const labelClass = 'text-xs font-mono text-[#a3a3a3] tracking-widest uppercase mb-2 block';
+const labelClass = 'text-xs font-mono text-[#555555] tracking-widest uppercase mb-2 block';
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>('idle');
@@ -92,19 +92,19 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === 'loading' || status === 'success'}
-        className="self-start px-6 py-3 text-sm font-medium text-[#f5f5f5] border border-white/20 rounded-md hover:border-[#c8964a] hover:text-[#c8964a] transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c8964a]"
+        className="self-start px-6 py-3 text-sm font-mono text-[#e8e8e8] border border-white/[0.12] rounded-sm hover:border-[#00d9b8]/50 hover:text-[#00d9b8] transition-colors duration-200 disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#00d9b8] cursor-pointer"
       >
-        {status === 'loading' ? 'Sending...' : 'Send message'}
+        {status === 'loading' ? 'sending...' : 'send message'}
       </button>
 
       {status === 'success' && (
-        <p role="alert" className="text-sm text-green-400">
-          Message sent — I&apos;ll be in touch soon.
+        <p role="alert" className="font-mono text-xs text-[#00d9b8]">
+          ✓ message sent — I&apos;ll be in touch soon.
         </p>
       )}
       {status === 'error' && (
-        <p role="alert" className="text-sm text-red-400">
-          Something went wrong. Please try again or email me directly.
+        <p role="alert" className="font-mono text-xs text-red-400">
+          ✗ something went wrong. please try again.
         </p>
       )}
     </form>

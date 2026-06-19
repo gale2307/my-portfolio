@@ -20,36 +20,36 @@ export default function OgImage() {
       >
         <p
           style={{
-            color: '#a3a3a3',
+            color: '#555555',
             fontSize: 18,
             fontFamily: 'monospace',
-            margin: '0 0 16px',
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
+            margin: '0 0 24px',
           }}
         >
-          {'// freelance'}
+          $ whoami
         </p>
         <h1
           style={{
-            color: '#f5f5f5',
-            fontSize: 80,
-            fontWeight: 300,
-            margin: '0 0 12px',
+            color: '#e8e8e8',
+            fontSize: 88,
+            fontWeight: 700,
+            margin: '0 0 16px',
             lineHeight: 1,
+            letterSpacing: '-0.03em',
           }}
         >
           Nicholas William
         </h1>
         <p
           style={{
-            color: '#a3a3a3',
-            fontSize: 32,
+            color: '#00d9b8',
+            fontSize: 22,
             fontWeight: 400,
+            fontFamily: 'monospace',
             margin: 0,
           }}
         >
-          Software Engineer
+          freelance software engineer
         </p>
       </div>
     ),

@@ -10,47 +10,54 @@ export function Hero() {
   const anim = (delay: number, duration = 0.5) => ({
     initial: {
       opacity: prefersReducedMotion ? 1 : 0,
-      y: prefersReducedMotion ? 0 : 16,
+      y: prefersReducedMotion ? 0 : 20,
     },
     animate: { opacity: 1, y: 0 },
     transition: { duration, delay: delay / 1000, ease: 'easeOut' as const },
   });
 
   return (
-    <section id="hero" className="h-[75vh] flex flex-col justify-center">
+    <section id="hero" className="min-h-[90vh] pt-14 flex flex-col justify-center">
       <div className="max-w-5xl mx-auto px-6">
-        <div className="max-w-2xl">
+        <div className="max-w-3xl">
           <motion.p
             {...anim(0, 0.4)}
-            className="font-mono text-xs text-[#a3a3a3] tracking-widest uppercase mb-6"
+            className="font-mono text-xs text-[#555555] mb-10"
           >
-            {"// freelance"}
+            $ whoami
           </motion.p>
 
           <motion.h1
             {...anim(100)}
-            className="font-bold text-[#f5f5f5] mb-2"
-            style={{ fontSize: 'clamp(48px, 6vw + 8px, 72px)', lineHeight: 1.1, letterSpacing: '-0.02em' }}
+            className="font-bold text-[#e8e8e8] mb-4"
+            style={{ fontSize: 'clamp(56px, 9vw, 104px)', lineHeight: 1.0, letterSpacing: '-0.03em' }}
           >
-            {heroData.name}
+            Nicholas
+            <br />
+            William
+            <span className="text-[#00d9b8] cursor-blink" aria-hidden="true">_</span>
           </motion.h1>
 
           <motion.p
-            {...anim(200)}
-            className="text-lg font-light text-[#a3a3a3] tracking-wide mb-4"
+            {...anim(220, 0.4)}
+            className="font-mono text-sm text-[#555555] tracking-wide mb-6"
           >
-            Freelance Software Engineer
+            freelance software engineer
           </motion.p>
 
           <motion.p
-            {...anim(300)}
-            className="text-base font-light text-[#f5f5f5] mb-8"
+            {...anim(380)}
+            className="text-base font-light text-[#888888] max-w-lg mb-10 leading-relaxed"
           >
             {heroData.tagline}
           </motion.p>
 
-          <motion.div {...anim(450, 0.4)}>
+          <motion.div {...anim(520, 0.4)} className="flex items-center gap-6">
             <Button href="#contact">Get in touch</Button>
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00d9b8] animate-pulse" />
+              <span className="font-mono text-xs text-[#555555]">available</span>
+            </div>
           </motion.div>
         </div>
       </div>

@@ -11,7 +11,7 @@ export function Button({ href, children, className }: ButtonProps) {
     <a
       href={href}
       className={[
-        "inline-block border border-[#c8964a] text-[#c8964a] px-6 py-3 rounded-sm tracking-wide text-[15px] font-medium transition-colors duration-200 hover:bg-[#c8964a]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c8964a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1a1a]",
+        "inline-block border border-[#00d9b8] text-[#00d9b8] px-6 py-3 rounded-sm tracking-wide text-sm font-mono transition-colors duration-200 hover:bg-[#00d9b8]/10 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#00d9b8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0d0d0d]",
         className,
       ]
         .filter(Boolean)
