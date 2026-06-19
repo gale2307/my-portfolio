@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { testimonials } from '@/lib/data/testimonials';
 
@@ -23,9 +24,11 @@ export function Testimonials() {
                 </p>
                 <div className="flex items-center gap-3 pt-4 border-t border-white/[0.08]">
                   {t.photo ? (
-                    <img
+                    <Image
                       src={t.photo}
                       alt={t.name}
+                      width={40}
+                      height={40}
                       className="w-10 h-10 rounded-full object-cover shrink-0"
                     />
                   ) : (
@@ -35,7 +38,7 @@ export function Testimonials() {
                       </span>
                     </div>
                   )}
-                  <div className="min-w-0">
+                  <div className="min-w-0 flex-1">
                     <p className="font-medium text-[#f5f5f5] text-sm truncate">{t.name}</p>
                     <p className="text-xs text-[#a3a3a3] font-mono truncate">
                       {t.title} · {t.company}
