@@ -89,4 +89,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-06-19 — Milestone v1.1 Testimonials started*
+*Last updated: 2026-06-19 — Phase 5 complete: TestimonialItem upgraded (photo/source/linkedinUrl), 5 provisional entries + directory created, next/image headshots + FaLinkedin badge live in Testimonials.tsx. Pending before launch: real client data (names/quotes/LinkedIn URLs) and headshot JPEGs.*
