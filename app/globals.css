@@ -13,6 +13,7 @@
 html {
   background-color: #0d0d0d;
   color: #e8e8e8;
+  scroll-behavior: smooth;
 }
 
 *,
