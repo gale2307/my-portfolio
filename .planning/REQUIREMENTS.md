@@ -49,6 +49,25 @@
 
 - [ ] **SEO-01**: Page has Open Graph metadata (title, description, image) for social sharing previews
 
+## v1.1 Requirements (Milestone: Testimonials)
+
+### Testimonials — Data & Content
+
+- [ ] **TEST-03**: `TestimonialItem` interface extended with `photo` (image path), `linkedinUrl` (optional), and `source` (`'linkedin' | 'direct'`) fields
+- [ ] **TEST-04**: Testimonials data file populated with 4–6 real client entries (quote, name, title, company, photo path, LinkedIn URL)
+
+### Testimonials — Card Design
+
+- [ ] **TEST-05**: Each card displays a real profile headshot as a circular image (via `next/image`) replacing the initials avatar
+- [ ] **TEST-06**: Cards sourced from LinkedIn display a LinkedIn badge icon + "View on LinkedIn" link
+
+### Testimonials — Layout
+
+- [ ] **TEST-07**: Testimonials section uses a carousel/slider layout replacing the current 3-column grid
+- [ ] **TEST-08**: Carousel has accessible prev/next controls (keyboard navigable, aria-labels on buttons)
+
+---
+
 ## v2 Requirements
 
 ### Hero Enhancements
@@ -80,7 +99,7 @@
 | CMS / content management | Static TypeScript data files are sufficient for a personal site |
 | Animated typing effect in hero | Dated, conflicts with nonchalant tone |
 | Skill progress bars / star ratings | Convey nothing meaningful, look unprofessional |
-| Testimonial carousel/slider | Users won't swipe; hides content |
+| Testimonial carousel/slider | ~~Users won't swipe; hides content~~ — Reconsidered in v1.1: carousel added as TEST-07 |
 | PDF resume download | Directs attention away from the site |
 
 ## Traceability
@@ -105,11 +124,19 @@
 | ANIM-02 | Phase 4 | Pending |
 | SEO-01 | Phase 4 | Pending |
 
+| TEST-03 | Phase 5 | Pending |
+| TEST-04 | Phase 5 | Pending |
+| TEST-05 | Phase 5 | Pending |
+| TEST-06 | Phase 5 | Pending |
+| TEST-07 | Phase 5 | Pending |
+| TEST-08 | Phase 5 | Pending |
+
 **Coverage:**
 - v1 requirements: 17 total
-- Mapped to phases: 17
+- v1.1 requirements: 6 total
+- Mapped to phases: 23
 - Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-06-18*
-*Last updated: 2026-06-18 after initial definition*
+*Last updated: 2026-06-19 — v1.1 Testimonials requirements added (TEST-03–TEST-08)*
