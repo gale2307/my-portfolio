@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { FaLinkedin } from 'react-icons/fa';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { testimonials } from '@/lib/data/testimonials';
 
@@ -44,6 +45,17 @@ export function Testimonials() {
                       {t.title} · {t.company}
                     </p>
                   </div>
+                  {t.source === 'linkedin' && t.linkedinUrl && (
+                    <a
+                      href={t.linkedinUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="View on LinkedIn"
+                      className="ml-auto text-[#a3a3a3] hover:text-[#f5f5f5] transition-colors duration-150 shrink-0"
+                    >
+                      <FaLinkedin size={16} />
+                    </a>
+                  )}
                 </div>
               </div>
             </FadeIn>
