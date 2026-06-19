@@ -13,6 +13,17 @@ A prospective client lands on the site and knows within seconds whether to reach
 - **Customer**: Prospective freelance clients discovering the site
 - **Success metric**: Contact form submissions / inquiries from qualified clients
 
+## Current Milestone: v1.1 Testimonials
+
+**Goal:** Upgrade the testimonials section with real client content, profile photos, LinkedIn verification, and a carousel layout.
+
+**Target features:**
+- Real testimonial data (4–6 entries) — quote, name, title, company — sourced from LinkedIn recommendations
+- Profile headshots per card (stored in `/public/images/testimonials/`)
+- LinkedIn source badge + "View on LinkedIn" link per card
+- Carousel/slider layout replacing the current 3-column grid
+- Updated `TestimonialItem` interface to support `photo`, `linkedinUrl`, and `source` fields
+
 ## Requirements
 
 ### Validated
@@ -78,4 +89,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-06-18 after initialization*
+*Last updated: 2026-06-19 — Milestone v1.1 Testimonials started*
