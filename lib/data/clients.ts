@@ -1,5 +1,6 @@
 export interface EmployerItem {
   name: string;
+  role: string;
   logo?: string;
 }
 
@@ -9,8 +10,9 @@ export interface ClientItem {
 }
 
 export const employers: EmployerItem[] = [
-  { name: 'Tokopedia' },
-  { name: 'BCA' },
+  { name: 'Tokopedia', role: 'Software Engineer' },
+  { name: 'BCA', role: 'Software Engineer' },
+  { name: 'University of Sydney', role: 'Research Assistant' },
 ];
 
 export const clients: ClientItem[] = [

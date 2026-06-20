@@ -11,25 +11,28 @@ export function Clients() {
         </p>
         <FadeIn>
           <div className="flex flex-wrap gap-3 mb-16">
-            {employers.map((employer) =>
-              employer.logo ? (
-                <div key={employer.name} className="h-12 px-6 flex items-center justify-center border border-white/[0.08] rounded-sm">
+            {employers.map((employer) => (
+              <div
+                key={employer.name}
+                className="h-16 px-6 flex flex-col items-start justify-center border border-white/[0.08] rounded-sm gap-0.5"
+              >
+                {employer.logo ? (
                   <img
                     src={employer.logo}
                     alt={employer.name}
                     className="h-5 w-auto"
                     style={{ filter: 'grayscale(1) opacity(0.5)' }}
                   />
-                </div>
-              ) : (
-                <div
-                  key={employer.name}
-                  className="h-12 px-6 flex items-center justify-center border border-white/[0.08] rounded-sm font-mono text-sm font-medium text-[#888888] tracking-wide"
-                >
-                  {employer.name}
-                </div>
-              )
-            )}
+                ) : (
+                  <span className="font-mono text-sm font-medium text-[#888888] tracking-wide">
+                    {employer.name}
+                  </span>
+                )}
+                <span className="font-mono text-xs text-[#555555]">
+                  {employer.role}
+                </span>
+              </div>
+            ))}
           </div>
         </FadeIn>
 
