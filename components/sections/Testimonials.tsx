@@ -13,9 +13,9 @@ export function Testimonials() {
   return (
     <section id="testimonials" className="py-24">
       <div className="max-w-5xl mx-auto px-6">
-        <p className="font-mono text-xs text-[#555555] tracking-widest uppercase mb-10">
+        <h2 className="font-mono text-xs text-[#555555] tracking-widest uppercase mb-10">
           {'// testimonials'}
-        </p>
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {testimonials.map((t, index) => (
             <FadeIn key={t.id} delay={index * 0.1}>

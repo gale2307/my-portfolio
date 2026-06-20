@@ -5,6 +5,7 @@ import { Skills } from '@/components/sections/Skills';
 import { Clients } from '@/components/sections/Clients';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { Contact } from '@/components/sections/Contact';
+import { Footer } from '@/components/ui/Footer';
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <Clients />
         <Contact />
       </main>
+      <Footer />
     </>
   );
 }

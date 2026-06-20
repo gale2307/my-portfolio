@@ -6,9 +6,9 @@ export function Clients() {
     <section id="work" className="py-24">
       <div className="max-w-5xl mx-auto px-6">
 
-        <p className="font-mono text-xs text-[#555555] tracking-widest uppercase mb-6">
+        <h2 className="font-mono text-xs text-[#555555] tracking-widest uppercase mb-6">
           {"// previously at"}
-        </p>
+        </h2>
         <FadeIn>
           <div className="flex flex-wrap gap-3 mb-16">
             {employers.map((employer) => (
@@ -36,9 +36,9 @@ export function Clients() {
           </div>
         </FadeIn>
 
-        <p className="font-mono text-xs text-[#555555] tracking-widest uppercase mb-6">
+        <h2 className="font-mono text-xs text-[#555555] tracking-widest uppercase mb-6">
           {"// clients"}
-        </p>
+        </h2>
         <FadeIn delay={0.1}>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
             {clients.map((client) =>

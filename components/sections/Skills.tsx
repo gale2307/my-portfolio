@@ -32,9 +32,9 @@ export function Skills() {
   return (
     <section id="skills" className="py-24">
       <div className="max-w-5xl mx-auto px-6">
-        <p className="font-mono text-xs text-[#555555] tracking-widest uppercase mb-10">
+        <h2 className="font-mono text-xs text-[#555555] tracking-widest uppercase mb-10">
           {"// stack"}
-        </p>
+        </h2>
         <motion.div
           className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl"
           variants={containerVariants}

@@ -6,9 +6,9 @@ export function About() {
     <section id="about" className="py-24">
       <div className="max-w-5xl mx-auto px-6">
         <div className="max-w-2xl">
-          <p className="font-mono text-xs text-[#555555] tracking-widest uppercase mb-8">
+          <h2 className="font-mono text-xs text-[#555555] tracking-widest uppercase mb-8">
             {"// about"}
-          </p>
+          </h2>
           <FadeIn>
             <p className="text-base font-light text-[#c0c0c0] leading-relaxed border-l-2 border-[#00d9b8]/20 pl-5">
               {aboutData.bio}

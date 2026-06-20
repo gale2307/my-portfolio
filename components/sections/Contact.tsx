@@ -8,9 +8,9 @@ export function Contact() {
     <section id="contact" className="py-24 pb-32">
       <div className="max-w-5xl mx-auto px-6">
         <div className="max-w-lg">
-          <p className="font-mono text-xs text-[#555555] tracking-widest uppercase mb-4">
+          <h2 className="font-mono text-xs text-[#555555] tracking-widest uppercase mb-4">
             {'// contact'}
-          </p>
+          </h2>
           <FadeIn>
             <p className="text-[#888888] text-sm mb-8">
               Have a project in mind? Get in touch.
