@@ -1,38 +1,64 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { useReducedMotion } from 'framer-motion';
+import { useEffect } from 'react';
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useMotionTemplate,
+  useReducedMotion,
+} from 'framer-motion';
 
 export function SpotlightCursor() {
-  const ref = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
+
+  const mouseX = useMotionValue(-600);
+  const mouseY = useMotionValue(-600);
+  const radius = useMotionValue(600);
+
+  const springX = useSpring(mouseX, { stiffness: 80, damping: 20, mass: 0.5 });
+  const springY = useSpring(mouseY, { stiffness: 80, damping: 20, mass: 0.5 });
+  const springRadius = useSpring(radius, { stiffness: 60, damping: 25, mass: 0.8 });
+
+  const background = useMotionTemplate`radial-gradient(${springRadius}px circle at ${springX}px ${springY}px, rgba(0, 217, 184, 0.07), transparent 70%)`;
 
   useEffect(() => {
     if (prefersReducedMotion) return;
 
-    const el = ref.current;
-    if (!el) return;
+    let lastX = 0;
+    let lastY = 0;
+    let lastTime = 0;
 
     const handleMouseMove = (e: MouseEvent) => {
-      el.style.setProperty('--x', `${e.clientX}px`);
-      el.style.setProperty('--y', `${e.clientY}px`);
+      const now = performance.now();
+      const dt = now - lastTime;
+
+      if (dt > 0 && lastTime > 0) {
+        const dx = e.clientX - lastX;
+        const dy = e.clientY - lastY;
+        const speed = Math.sqrt(dx * dx + dy * dy) / dt; // px/ms
+        radius.set(600 + Math.min(speed * 150, 300));
+      }
+
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+
+      lastX = e.clientX;
+      lastY = e.clientY;
+      lastTime = now;
     };
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [prefersReducedMotion]);
+  }, [prefersReducedMotion, mouseX, mouseY, radius]);
 
   if (prefersReducedMotion) return null;
 
   return (
-    <div
-      ref={ref}
+    <motion.div
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 z-[1]"
-      style={{
-        background:
-          'radial-gradient(600px circle at var(--x, -600px) var(--y, -600px), rgba(0, 217, 184, 0.07), transparent 70%)',
-      }}
+      style={{ background }}
     />
   );
 }
