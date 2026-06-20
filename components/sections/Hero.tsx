@@ -39,6 +39,13 @@ function useTypewriter(text: string, speed: number, startDelay: number, skip: bo
 export function Hero() {
   const prefersReducedMotion = useReducedMotion();
   const roleText = useTypewriter(ROLE_TEXT, 45, 750, !!prefersReducedMotion);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 80);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const anim = (delay: number, duration = 0.5) => ({
     initial: { opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 20 },
@@ -66,7 +73,7 @@ export function Hero() {
   };
 
   return (
-    <section id="hero" className="min-h-[90vh] pt-14 flex flex-col justify-center">
+    <section id="hero" className="relative min-h-[90vh] pt-14 flex flex-col justify-center">
       <div className="max-w-5xl mx-auto px-6">
         <div className="max-w-3xl">
           <motion.p
@@ -121,6 +128,25 @@ export function Hero() {
           </motion.div>
         </div>
       </div>
+
+      {!prefersReducedMotion && (
+        <motion.div
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-8 left-1/2 -translate-x-1/2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: scrolled ? 0 : 1 }}
+          transition={{ delay: scrolled ? 0 : 2.5, duration: 0.5 }}
+        >
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut', delay: 2.5 }}
+          >
+            <svg width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true">
+              <path d="M1 1l7 7 7-7" stroke="#555555" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </motion.div>
+        </motion.div>
+      )}
     </section>
   );
 }
