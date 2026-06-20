@@ -12,7 +12,10 @@ export function Contact() {
             {'// contact'}
           </h2>
           <FadeIn>
-            <p className="text-[#888888] text-sm mb-8">
+            <p className="text-[#e8e8e8] text-2xl font-light tracking-tight mb-2">
+              Let&apos;s build something.
+            </p>
+            <p className="text-[#555555] text-sm mb-8">
               Have a project in mind? Get in touch.
             </p>
           </FadeIn>

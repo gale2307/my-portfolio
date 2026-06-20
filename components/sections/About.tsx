@@ -10,7 +10,7 @@ export function About() {
             {"// about"}
           </h2>
           <FadeIn>
-            <p className="text-base font-light text-[#c0c0c0] leading-relaxed border-l-2 border-[#00d9b8]/20 pl-5">
+            <p className="text-base font-light text-[#c0c0c0] leading-relaxed border-l-2 border-[#00d9b8]/40 pl-5">
               {aboutData.bio}
             </p>
           </FadeIn>
