@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { employers, clients } from '@/lib/data/clients';
 
@@ -17,9 +18,11 @@ export function Clients() {
                 className="h-16 px-6 flex flex-col items-start justify-center border border-white/[0.08] rounded-sm gap-0.5"
               >
                 {employer.logo ? (
-                  <img
+                  <Image
                     src={employer.logo}
                     alt={employer.name}
+                    width={120}
+                    height={20}
                     className="h-5 w-auto"
                     style={{ filter: 'grayscale(1) opacity(0.5)' }}
                   />
@@ -44,9 +47,11 @@ export function Clients() {
             {clients.map((client) =>
               client.logo ? (
                 <div key={client.name} className="h-14 flex items-center justify-center border border-white/[0.06] rounded-sm">
-                  <img
+                  <Image
                     src={client.logo}
                     alt={client.name}
+                    width={120}
+                    height={24}
                     className="h-6 w-auto"
                     style={{ filter: 'grayscale(1) opacity(0.45)' }}
                   />
