@@ -1,11 +1,54 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import type { CSSProperties } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { heroData } from '@/lib/data/hero';
 import { Button } from '@/components/ui/Button';
 
-const ROLE_TEXT = 'freelance software engineer';
+// ── Holographic panels (hero-scoped) ──────────────────────────────────────────
+const PANELS: {
+  style: CSSProperties;
+  rotation: string;
+  delay: string;
+  lines: readonly string[];
+}[] = [
+  {
+    style: { top: '14%', right: '2.5%' },
+    rotation: '-7deg',
+    delay: '0s',
+    lines: ['SYS.REF ▸ 0x4A3F', 'DELTA:   +0.003ms', 'NODE:    07 / 12', '──────────────────', '▸ STATUS: [ACTIVE]'],
+  },
+  {
+    style: { top: '44%', left: '1.5%' },
+    rotation: '5deg',
+    delay: '-3.2s',
+    lines: ['LAT:  −27.4698°', 'LON:  153.0251°', '──────────────────', 'SIG:  ████░░ 72%', 'PING: 0.14ms'],
+  },
+  {
+    style: { bottom: '22%', right: '3%' },
+    rotation: '-4deg',
+    delay: '-6.5s',
+    lines: ['PROC:  0.12ms', 'MEM:   38/256mb', '──────────────────', 'UPTIME: 47d 03h', '▸ SYNC: [OK]'],
+  },
+];
+
+type Corner = 'tl' | 'tr' | 'bl' | 'br';
+const CORNERS: Corner[] = ['tl', 'tr', 'bl', 'br'];
+
+function cornerStyle(c: Corner): CSSProperties {
+  return {
+    position: 'absolute',
+    width: 7,
+    height: 7,
+    ...(c[0] === 't' ? { top: 4 } : { bottom: 4 }),
+    ...(c[1] === 'l' ? { left: 4 } : { right: 4 }),
+    borderTop:    c[0] === 't' ? '1px solid rgba(0,217,184,0.38)' : 'none',
+    borderBottom: c[0] === 'b' ? '1px solid rgba(0,217,184,0.38)' : 'none',
+    borderLeft:   c[1] === 'l' ? '1px solid rgba(0,217,184,0.38)' : 'none',
+    borderRight:  c[1] === 'r' ? '1px solid rgba(0,217,184,0.38)' : 'none',
+  };
+}
 
 function useTypewriter(text: string, speed: number, startDelay: number, skip: boolean) {
   const [displayed, setDisplayed] = useState(skip ? text : '');
@@ -38,7 +81,7 @@ function useTypewriter(text: string, speed: number, startDelay: number, skip: bo
 
 export function Hero() {
   const prefersReducedMotion = useReducedMotion();
-  const roleText = useTypewriter(ROLE_TEXT, 45, 750, !!prefersReducedMotion);
+  const roleText = useTypewriter(heroData.role, 45, 750, !!prefersReducedMotion);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -74,6 +117,53 @@ export function Hero() {
 
   return (
     <section id="hero" className="relative min-h-[90vh] pt-14 flex flex-col justify-center">
+      {/* Holographic panels — absolute within hero so they don't leak into other sections */}
+      {PANELS.map((p, i) => (
+        <div
+          key={i}
+          aria-hidden="true"
+          className="pointer-events-none absolute hidden md:block"
+          style={{ ...p.style, width: 158, transform: `rotate(${p.rotation})` }}
+        >
+          <div
+            className="techo-holo-panel"
+            style={{ animation: 'holo-float 9s ease-in-out infinite', animationDelay: p.delay }}
+          >
+            <div
+              style={{
+                background: 'rgba(0,8,8,0.55)',
+                border: '1px solid rgba(0,217,184,0.15)',
+                boxShadow: '0 0 16px rgba(0,217,184,0.06), inset 0 0 28px rgba(0,217,184,0.02)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                padding: '12px 14px',
+                fontFamily: 'var(--font-jetbrains-mono)',
+                fontSize: '9px',
+                letterSpacing: '0.06em',
+                color: 'rgba(0,217,184,0.46)',
+                lineHeight: '1.9',
+                position: 'relative',
+                overflow: 'hidden',
+              }}
+            >
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.1) 3px,rgba(0,0,0,0.1) 4px)',
+                  pointerEvents: 'none',
+                  zIndex: 1,
+                }}
+              />
+              {CORNERS.map(c => <div key={c} style={cornerStyle(c)} />)}
+              <div style={{ position: 'relative', zIndex: 2 }}>
+                {p.lines.map((line, j) => <div key={j}>{line}</div>)}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+
       <div className="max-w-5xl mx-auto px-6">
         <div className="max-w-3xl">
           <motion.p
@@ -107,7 +197,7 @@ export function Hero() {
           <motion.p
             {...anim(650, 0.25)}
             className="font-mono text-sm text-[#555555] tracking-wide mb-6 h-5"
-            aria-label={ROLE_TEXT}
+            aria-label={heroData.role}
           >
             {roleText || ' '}
           </motion.p>

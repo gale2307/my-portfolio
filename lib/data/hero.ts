@@ -1,9 +1,11 @@
 export interface HeroData {
   name: string;
+  role: string;
   tagline: string;
 }
 
 export const heroData: HeroData = {
-  name: 'Nicholas William',
-  tagline: 'Production-grade engineering at startup speed.',
+  name: 'Nicholas Hadiwijaya',
+  role: 'software engineer',
+  tagline: 'Engineering Quality Work.',
 };

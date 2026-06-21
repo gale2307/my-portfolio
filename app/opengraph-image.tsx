@@ -38,7 +38,7 @@ export default function OgImage() {
             letterSpacing: '-0.03em',
           }}
         >
-          Nicholas William
+          Nicholas Hadiwijaya
         </h1>
         <p
           style={{
@@ -49,7 +49,7 @@ export default function OgImage() {
             margin: 0,
           }}
         >
-          freelance software engineer
+          software engineer
         </p>
       </div>
     ),
