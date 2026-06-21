@@ -1,22 +1,17 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import type { CSSProperties } from 'react';
 
-// ── Trigonometric gradient noise (no external deps) ──────────────────────────
-// Four overlapping sine/cosine waves at different frequencies produce
-// the organic, slowly-evolving field that drives the topographic contours.
+// ── Gradient noise ─────────────────────────────────────────────────────────────
 function gNoise(x: number, y: number, t: number): number {
   const v =
     Math.sin(x * 1.2 + t * 0.7) * Math.cos(y * 0.8 + t * 0.5) +
     Math.sin(x * 0.5 - y * 0.7 + t * 1.1) * 0.6 +
     Math.cos(x * 0.9 + y * 1.3 - t * 0.4) * 0.4;
-  return (v / 2 + 1) / 2; // normalize to [0, 1]
+  return (v / 2 + 1) / 2;
 }
 
-// ── Marching Squares ─────────────────────────────────────────────────────────
-// Returns iso-line segments for a single threshold over a regular grid.
-// Bit encoding: v00(top-left)=8, v01(top-right)=4, v11(btm-right)=2, v10(btm-left)=1
+// ── Marching Squares ──────────────────────────────────────────────────────────
 type Seg = readonly [number, number, number, number];
 
 function marchSquares(
@@ -28,7 +23,6 @@ function marchSquares(
   ch: number,
 ): Seg[] {
   const out: Seg[] = [];
-
   const lerp = (pa: number, pb: number, va: number, vb: number) =>
     Math.abs(vb - va) < 1e-6 ? (pa + pb) / 2 : pa + ((thresh - va) * (pb - pa)) / (vb - va);
 
@@ -38,20 +32,15 @@ function marchSquares(
       const v01 = grid[r * cols + c + 1];
       const v11 = grid[(r + 1) * cols + c + 1];
       const v10 = grid[(r + 1) * cols + c];
-
       const b =
-        (v00 > thresh ? 8 : 0) |
-        (v01 > thresh ? 4 : 0) |
-        (v11 > thresh ? 2 : 0) |
-        (v10 > thresh ? 1 : 0);
+        (v00 > thresh ? 8 : 0) | (v01 > thresh ? 4 : 0) |
+        (v11 > thresh ? 2 : 0) | (v10 > thresh ? 1 : 0);
       if (b === 0 || b === 15) continue;
-
       const x0 = c * cw, y0 = r * ch, x1 = x0 + cw, y1 = y0 + ch;
       const top:    [number, number] = [lerp(x0, x1, v00, v01), y0];
       const right:  [number, number] = [x1,  lerp(y0, y1, v01, v11)];
       const bottom: [number, number] = [lerp(x0, x1, v10, v11), y1];
       const left:   [number, number] = [x0,  lerp(y0, y1, v00, v10)];
-
       switch (b) {
         case 1:  case 14: out.push([...left,   ...bottom]); break;
         case 2:  case 13: out.push([...right,  ...bottom]); break;
@@ -73,14 +62,258 @@ function marchSquares(
   return out;
 }
 
-// ── Topographic canvas ────────────────────────────────────────────────────────
+// ── Constants ──────────────────────────────────────────────────────────────────
 const COLS = 70;
 const ROWS = 40;
-const THRESHOLDS = [0.25, 0.35, 0.45, 0.55, 0.65, 0.75] as const;
+const THRESHOLDS  = [0.25, 0.35, 0.45, 0.55, 0.65, 0.75] as const;
 const LINE_COLORS = ['#00d9b8', '#00aadd', '#0066ff', '#5533ff', '#7b2fff', '#00ff88'] as const;
 
-function TopoCanvas() {
+const LENS_RADIUS = 160;   // pixels
+const LENS_STRENGTH = 2.4; // exponent >1 = magnify, <1 = pinch
+
+// ── Building schematics ────────────────────────────────────────────────────────
+type BuildingDef = {
+  px: number; py: number; // top-left as fraction of W, H
+  pw: number; ph: number; // size as fraction of W, H
+  divs: Array<{ a: 'h' | 'v'; t: number }>;
+  door: { side: 'top' | 'right' | 'bottom' | 'left'; t: number };
+};
+
+// Positions chosen to avoid the Hero text block (top-left region)
+const BUILDINGS: BuildingDef[] = [
+  {
+    px: 0.73, py: 0.06, pw: 0.10, ph: 0.13,
+    divs: [{ a: 'h', t: 0.55 }, { a: 'v', t: 0.48 }],
+    door: { side: 'left', t: 0.28 },
+  },
+  {
+    px: 0.05, py: 0.30, pw: 0.07, ph: 0.10,
+    divs: [{ a: 'v', t: 0.50 }],
+    door: { side: 'right', t: 0.50 },
+  },
+  {
+    px: 0.59, py: 0.63, pw: 0.09, ph: 0.12,
+    divs: [{ a: 'h', t: 0.42 }, { a: 'v', t: 0.60 }],
+    door: { side: 'top', t: 0.72 },
+  },
+  {
+    px: 0.84, py: 0.50, pw: 0.06, ph: 0.08,
+    divs: [{ a: 'h', t: 0.50 }],
+    door: { side: 'left', t: 0.30 },
+  },
+  {
+    px: 0.13, py: 0.70, pw: 0.09, ph: 0.07,
+    divs: [{ a: 'v', t: 0.38 }, { a: 'v', t: 0.68 }],
+    door: { side: 'top', t: 0.52 },
+  },
+  {
+    px: 0.44, py: 0.16, pw: 0.05, ph: 0.08,
+    divs: [],
+    door: { side: 'bottom', t: 0.40 },
+  },
+];
+
+function drawBuildings(ctx: CanvasRenderingContext2D, w: number, h: number) {
+  ctx.save();
+  ctx.strokeStyle = 'rgba(0,217,184,0.28)';
+  ctx.lineWidth = 0.7;
+  ctx.shadowColor = 'rgba(0,217,184,0.5)';
+  ctx.shadowBlur = 2;
+
+  for (const b of BUILDINGS) {
+    const bx = b.px * w;
+    const by = b.py * h;
+    const bw = b.pw * w;
+    const bh = b.ph * h;
+    const dr = Math.min(bw, bh) * 0.20;
+
+    // Outer shell
+    ctx.setLineDash([]);
+    ctx.beginPath();
+    ctx.rect(bx, by, bw, bh);
+    ctx.stroke();
+
+    // Interior wall divisions
+    for (const div of b.divs) {
+      ctx.beginPath();
+      if (div.a === 'h') {
+        const dy = by + div.t * bh;
+        ctx.moveTo(bx, dy);
+        ctx.lineTo(bx + bw, dy);
+      } else {
+        const dx = bx + div.t * bw;
+        ctx.moveTo(dx, by);
+        ctx.lineTo(dx, by + bh);
+      }
+      ctx.stroke();
+    }
+
+    // Door symbol: panel line + dashed quarter-arc swing
+    const { side, t } = b.door;
+    let hx: number, hy: number;   // hinge point
+    let fex: number, fey: number; // door panel free end (closed)
+    let sa: number, ea: number;
+    let acw = false;
+
+    switch (side) {
+      case 'bottom':
+        hx = bx + t * bw; hy = by + bh;
+        fex = hx; fey = hy - dr;
+        sa = -Math.PI / 2; ea = 0;
+        break;
+      case 'top':
+        hx = bx + t * bw; hy = by;
+        fex = hx; fey = hy + dr;
+        sa = 0; ea = Math.PI / 2;
+        break;
+      case 'left':
+        hx = bx; hy = by + t * bh;
+        fex = hx + dr; fey = hy;
+        sa = 0; ea = Math.PI / 2;
+        break;
+      case 'right':
+      default:
+        hx = bx + bw; hy = by + t * bh;
+        fex = hx - dr; fey = hy;
+        sa = Math.PI; ea = Math.PI / 2; acw = true;
+        break;
+    }
+
+    ctx.setLineDash([]);
+    ctx.beginPath();
+    ctx.moveTo(hx, hy);
+    ctx.lineTo(fex, fey);
+    ctx.stroke();
+
+    ctx.setLineDash([2, 2]);
+    ctx.beginPath();
+    ctx.arc(hx, hy, dr, sa, ea, acw);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  ctx.restore();
+}
+
+// ── Edge rulers ───────────────────────────────────────────────────────────────
+const RULER_SZ = 22; // width of left ruler / height of bottom ruler in px
+const MAJOR_PX = 80; // px between major ticks
+const MINOR_PX = 20; // px between minor ticks
+
+function drawRulers(ctx: CanvasRenderingContext2D, w: number, h: number) {
+  ctx.save();
+  const C = (a: number) => `rgba(0,217,184,${a})`;
+  ctx.lineWidth = 0.5;
+  ctx.font = '7px monospace';
+
+  // ── Left ruler ──
+  ctx.strokeStyle = C(0.25);
+  ctx.beginPath();
+  ctx.moveTo(RULER_SZ, 0);
+  ctx.lineTo(RULER_SZ, h - RULER_SZ);
+  ctx.stroke();
+
+  for (let y = 0; y <= h - RULER_SZ; y += MINOR_PX) {
+    const isMaj = y % MAJOR_PX === 0;
+    ctx.strokeStyle = C(isMaj ? 0.36 : 0.16);
+    ctx.beginPath();
+    ctx.moveTo(RULER_SZ, y);
+    ctx.lineTo(RULER_SZ - (isMaj ? 9 : 4), y);
+    ctx.stroke();
+    if (isMaj && y > 0) {
+      ctx.fillStyle = C(0.40);
+      ctx.textAlign = 'right';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(String(Math.round(y / MAJOR_PX) * 10), RULER_SZ - 11, y);
+    }
+  }
+
+  // ── Bottom ruler ──
+  ctx.strokeStyle = C(0.25);
+  ctx.beginPath();
+  ctx.moveTo(RULER_SZ, h - RULER_SZ);
+  ctx.lineTo(w, h - RULER_SZ);
+  ctx.stroke();
+
+  for (let x = RULER_SZ; x <= w; x += MINOR_PX) {
+    const off = x - RULER_SZ;
+    const isMaj = off % MAJOR_PX === 0;
+    ctx.strokeStyle = C(isMaj ? 0.36 : 0.16);
+    ctx.beginPath();
+    ctx.moveTo(x, h - RULER_SZ);
+    ctx.lineTo(x, h - RULER_SZ + (isMaj ? 9 : 4));
+    ctx.stroke();
+    if (isMaj && off > 0) {
+      ctx.fillStyle = C(0.40);
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'top';
+      ctx.fillText(String(Math.round(off / MAJOR_PX) * 10), x, h - RULER_SZ + 11);
+    }
+  }
+
+  // ── Corner crosshair (intersection of left + bottom rulers) ──
+  const cx = RULER_SZ / 2;
+  const cy = h - RULER_SZ / 2;
+  ctx.strokeStyle = C(0.32);
+  ctx.beginPath();
+  ctx.moveTo(cx - 4, cy); ctx.lineTo(cx + 4, cy);
+  ctx.moveTo(cx, cy - 4); ctx.lineTo(cx, cy + 4);
+  ctx.stroke();
+
+  ctx.restore();
+}
+
+// ── Lens ring overlay ─────────────────────────────────────────────────────────
+function drawLensRing(ctx: CanvasRenderingContext2D, mx: number, my: number) {
+  const r = LENS_RADIUS;
+  const C = 'rgba(0,217,184,';
+  ctx.save();
+
+  // Dashed perimeter
+  ctx.strokeStyle = C + '0.40)';
+  ctx.lineWidth = 0.7;
+  ctx.setLineDash([3, 6]);
+  ctx.shadowColor = '#00d9b8';
+  ctx.shadowBlur = 4;
+  ctx.beginPath();
+  ctx.arc(mx, my, r, 0, Math.PI * 2);
+  ctx.stroke();
+
+  // N/S/E/W notch ticks
+  ctx.setLineDash([]);
+  ctx.lineWidth = 0.8;
+  const N = 7;
+  ctx.beginPath();
+  ctx.moveTo(mx - r - N, my); ctx.lineTo(mx - r + N, my);
+  ctx.moveTo(mx + r - N, my); ctx.lineTo(mx + r + N, my);
+  ctx.moveTo(mx, my - r - N); ctx.lineTo(mx, my - r + N);
+  ctx.moveTo(mx, my + r - N); ctx.lineTo(mx, my + r + N);
+  ctx.stroke();
+
+  // Center dot
+  ctx.shadowBlur = 8;
+  ctx.fillStyle = C + '0.80)';
+  ctx.beginPath();
+  ctx.arc(mx, my, 2.5, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Coordinate readout (top-right of ring)
+  ctx.shadowBlur = 0;
+  ctx.font = '8px monospace';
+  ctx.fillStyle = C + '0.50)';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'top';
+  const xStr = Math.round(mx).toString().padStart(4, ' ');
+  const yStr = Math.round(my).toString().padStart(4, ' ');
+  ctx.fillText(`X:${xStr}  Y:${yStr}`, mx + r + 8, my - 6);
+
+  ctx.restore();
+}
+
+// ── Survey canvas ──────────────────────────────────────────────────────────────
+function SurveyCanvas({ fishEye }: { fishEye: boolean }) {
   const ref = useRef<HTMLCanvasElement>(null);
+  const mouseRef = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
     const canvas = ref.current;
@@ -90,7 +323,7 @@ function TopoCanvas() {
 
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    const FRAME_MS = isMobile ? 66 : 34; // ~15fps mobile, ~30fps desktop
+    const FRAME_MS = isMobile ? 66 : 34;
     const grid = new Float32Array(ROWS * COLS);
     let t = 0;
     let raf = 0;
@@ -103,29 +336,54 @@ function TopoCanvas() {
     onResize();
     window.addEventListener('resize', onResize);
 
+    const onMouseMove = (e: MouseEvent) => {
+      mouseRef.current = { x: e.clientX, y: e.clientY };
+    };
+    const onMouseLeave = () => { mouseRef.current = null; };
+    window.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseleave', onMouseLeave);
+
     const frame = (ts: number) => {
       raf = requestAnimationFrame(frame);
       if (ts - prev < FRAME_MS) return;
       prev = ts;
 
-      const { width: w, height: h } = canvas;
-      const cw = w / (COLS - 1);
-      const ch = h / (ROWS - 1);
+      const { width: ww, height: hh } = canvas;
+      const cw = ww / (COLS - 1);
+      const ch = hh / (ROWS - 1);
 
-      for (let r = 0; r < ROWS; r++)
-        for (let c = 0; c < COLS; c++)
-          grid[r * COLS + c] = gNoise(
-            (c / (COLS - 1)) * 5.5,
-            (r / (ROWS - 1)) * 3.5,
-            t,
-          );
+      const mouse = mouseRef.current;
 
-      ctx.clearRect(0, 0, w, h);
+      for (let r = 0; r < ROWS; r++) {
+        for (let c = 0; c < COLS; c++) {
+          let sx = (c / (COLS - 1)) * ww;
+          let sy = (r / (ROWS - 1)) * hh;
 
+          if (fishEye && mouse) {
+            const dx = sx - mouse.x;
+            const dy = sy - mouse.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < LENS_RADIUS && dist > 1e-6) {
+              const tf = dist / LENS_RADIUS;
+              const warpedDist = Math.pow(tf, LENS_STRENGTH) * LENS_RADIUS;
+              const scale = warpedDist / dist;
+              sx = mouse.x + dx * scale;
+              sy = mouse.y + dy * scale;
+            }
+          }
+
+          const nx = (sx / ww) * 5.5;
+          const ny = (sy / hh) * 3.5;
+          grid[r * COLS + c] = gNoise(nx, ny, t);
+        }
+      }
+
+      ctx.clearRect(0, 0, ww, hh);
+
+      // Neon topographic contours
       for (let i = 0; i < THRESHOLDS.length; i++) {
         const segs = marchSquares(grid, ROWS, COLS, THRESHOLDS[i], cw, ch);
         if (!segs.length) continue;
-
         ctx.save();
         ctx.strokeStyle = LINE_COLORS[i];
         ctx.lineWidth = 0.9;
@@ -141,6 +399,11 @@ function TopoCanvas() {
         ctx.restore();
       }
 
+      if (fishEye && mouse) drawLensRing(ctx, mouse.x, mouse.y);
+
+      drawBuildings(ctx, ww, hh);
+      drawRulers(ctx, ww, hh);
+
       if (!reduced) t += 0.0025;
     };
 
@@ -148,6 +411,8 @@ function TopoCanvas() {
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener('resize', onResize);
+      window.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseleave', onMouseLeave);
     };
   }, []);
 
@@ -161,138 +426,6 @@ function TopoCanvas() {
   );
 }
 
-// ── Perspective grid ──────────────────────────────────────────────────────────
-function PerspectiveGrid() {
-  return (
-    <div
-      aria-hidden="true"
-      className="pointer-events-none fixed bottom-0 left-0 right-0"
-      style={{
-        height: '55vh',
-        backgroundImage: [
-          'linear-gradient(rgba(0,217,184,0.07) 1px, transparent 1px)',
-          'linear-gradient(90deg, rgba(0,217,184,0.07) 1px, transparent 1px)',
-        ].join(','),
-        backgroundSize: '7% 12%',
-        transform: 'perspective(700px) rotateX(58deg)',
-        transformOrigin: '50% 100%',
-        maskImage:
-          'linear-gradient(to top, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.2) 35%, transparent 75%)',
-        WebkitMaskImage:
-          'linear-gradient(to top, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.2) 35%, transparent 75%)',
-        zIndex: -2,
-      }}
-    />
-  );
-}
-
-// ── Holographic floating panels ───────────────────────────────────────────────
-const PANELS: {
-  style: CSSProperties;
-  rotation: string;
-  delay: string;
-  lines: readonly string[];
-}[] = [
-  {
-    style: { top: '14%', right: '2.5%' },
-    rotation: '-7deg',
-    delay: '0s',
-    lines: ['SYS.REF ▸ 0x4A3F', 'DELTA:   +0.003ms', 'NODE:    07 / 12', '──────────────────', '▸ STATUS: [ACTIVE]'],
-  },
-  {
-    style: { top: '44%', left: '1.5%' },
-    rotation: '5deg',
-    delay: '-3.2s',
-    lines: ['LAT:  −27.4698°', 'LON:  153.0251°', '──────────────────', 'SIG:  ████░░ 72%', 'PING: 0.14ms'],
-  },
-  {
-    style: { bottom: '22%', right: '3%' },
-    rotation: '-4deg',
-    delay: '-6.5s',
-    lines: ['PROC:  0.12ms', 'MEM:   38/256mb', '──────────────────', 'UPTIME: 47d 03h', '▸ SYNC: [OK]'],
-  },
-];
-
-type Corner = 'tl' | 'tr' | 'bl' | 'br';
-const CORNERS: Corner[] = ['tl', 'tr', 'bl', 'br'];
-
-function cornerStyle(c: Corner): CSSProperties {
-  return {
-    position: 'absolute',
-    width: 7,
-    height: 7,
-    ...(c[0] === 't' ? { top: 4 } : { bottom: 4 }),
-    ...(c[1] === 'l' ? { left: 4 } : { right: 4 }),
-    borderTop:    c[0] === 't' ? '1px solid rgba(0,217,184,0.38)' : 'none',
-    borderBottom: c[0] === 'b' ? '1px solid rgba(0,217,184,0.38)' : 'none',
-    borderLeft:   c[1] === 'l' ? '1px solid rgba(0,217,184,0.38)' : 'none',
-    borderRight:  c[1] === 'r' ? '1px solid rgba(0,217,184,0.38)' : 'none',
-  };
-}
-
-function HoloPanels() {
-  return (
-    <>
-      {PANELS.map((p, i) => (
-        <div
-          key={i}
-          aria-hidden="true"
-          className="pointer-events-none fixed hidden md:block"
-          style={{ ...p.style, width: 158, transform: `rotate(${p.rotation})`, zIndex: -1 }}
-        >
-          <div
-            className="techo-holo-panel"
-            style={{ animation: 'holo-float 9s ease-in-out infinite', animationDelay: p.delay }}
-          >
-            <div
-              style={{
-                background: 'rgba(0,8,8,0.55)',
-                border: '1px solid rgba(0,217,184,0.15)',
-                boxShadow: '0 0 16px rgba(0,217,184,0.06), inset 0 0 28px rgba(0,217,184,0.02)',
-                backdropFilter: 'blur(10px)',
-                WebkitBackdropFilter: 'blur(10px)',
-                padding: '12px 14px',
-                fontFamily: 'var(--font-jetbrains-mono)',
-                fontSize: '9px',
-                letterSpacing: '0.06em',
-                color: 'rgba(0,217,184,0.46)',
-                lineHeight: '1.9',
-                position: 'relative',
-                overflow: 'hidden',
-              }}
-            >
-              {/* scanlines */}
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background:
-                    'repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.1) 3px,rgba(0,0,0,0.1) 4px)',
-                  pointerEvents: 'none',
-                  zIndex: 1,
-                }}
-              />
-              {/* corner brackets */}
-              {CORNERS.map(c => <div key={c} style={cornerStyle(c)} />)}
-              {/* text content */}
-              <div style={{ position: 'relative', zIndex: 2 }}>
-                {p.lines.map((line, j) => <div key={j}>{line}</div>)}
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-    </>
-  );
-}
-
-// ── Main export ───────────────────────────────────────────────────────────────
-export function TechnoBackground() {
-  return (
-    <>
-      <TopoCanvas />
-      <PerspectiveGrid />
-      <HoloPanels />
-    </>
-  );
+export function TechnoBackground({ fishEye = true }: { fishEye?: boolean }) {
+  return <SurveyCanvas fishEye={fishEye} />;
 }
