@@ -12,7 +12,7 @@
 
 html {
   background-color: #0d0d0d;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
   background-size: 28px 28px;
   color: #e8e8e8;
   scroll-behavior: smooth;
@@ -38,4 +38,16 @@ body {
 
 .cursor-blink {
   animation: blink 1.2s step-end infinite;
+}
+
+@keyframes holo-float {
+  0%, 100% { transform: translateY(0px);   opacity: 0.85; }
+  40%       { transform: translateY(-10px); opacity: 1;    }
+  70%       { transform: translateY(4px);  opacity: 0.9;  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .techo-holo-panel {
+    animation: none !important;
+  }
 }

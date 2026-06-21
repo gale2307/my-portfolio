@@ -2,6 +2,7 @@ import { IBM_Plex_Sans, JetBrains_Mono } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
 import { SpotlightCursor } from "@/components/ui/SpotlightCursor";
+import { TechnoBackground } from "@/components/ui/TechnoBackground";
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -44,6 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${ibmPlexSans.variable} ${jetbrainsMono.variable}`}>
       <body>
+        <TechnoBackground />
         <SpotlightCursor />
         {children}
         <script
