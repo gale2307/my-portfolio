@@ -46,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${ibmPlexSans.variable} ${jetbrainsMono.variable}`}>
       <body>
-        <TechnoBackground fishEye={effectsConfig.fishEyeLens} />
+        <TechnoBackground fishEye={effectsConfig.fishEyeLens} lensRing={effectsConfig.lensRingOverlay} />
         {effectsConfig.spotlightCursor && <SpotlightCursor />}
         {children}
         <script

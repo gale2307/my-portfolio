@@ -311,7 +311,7 @@ function drawLensRing(ctx: CanvasRenderingContext2D, mx: number, my: number) {
 }
 
 // ── Survey canvas ──────────────────────────────────────────────────────────────
-function SurveyCanvas({ fishEye }: { fishEye: boolean }) {
+function SurveyCanvas({ fishEye, lensRing }: { fishEye: boolean; lensRing: boolean }) {
   const ref = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef<{ x: number; y: number } | null>(null);
 
@@ -399,7 +399,7 @@ function SurveyCanvas({ fishEye }: { fishEye: boolean }) {
         ctx.restore();
       }
 
-      if (fishEye && mouse) drawLensRing(ctx, mouse.x, mouse.y);
+      if (fishEye && lensRing && mouse) drawLensRing(ctx, mouse.x, mouse.y);
 
       drawBuildings(ctx, ww, hh);
       drawRulers(ctx, ww, hh);
@@ -426,6 +426,6 @@ function SurveyCanvas({ fishEye }: { fishEye: boolean }) {
   );
 }
 
-export function TechnoBackground({ fishEye = true }: { fishEye?: boolean }) {
-  return <SurveyCanvas fishEye={fishEye} />;
+export function TechnoBackground({ fishEye = true, lensRing = true }: { fishEye?: boolean; lensRing?: boolean }) {
+  return <SurveyCanvas fishEye={fishEye} lensRing={lensRing} />;
 }
