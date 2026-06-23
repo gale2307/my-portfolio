@@ -1,0 +1,79 @@
+<svg width="390" height="844" viewBox="0 0 390 844" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="390" height="844" fill="#0d0d0d"/>
+
+  <!-- Status bar -->
+  <rect width="390" height="44" fill="#111111"/>
+  <text x="20" y="28" font-family="monospace" font-size="12" fill="#888888">9:41</text>
+  <rect x="330" y="16" width="42" height="12" rx="3" fill="#333333"/>
+  <rect x="332" y="18" width="30" height="8" rx="2" fill="#00d9b8" opacity="0.6"/>
+
+  <!-- Nav bar -->
+  <rect y="44" width="390" height="52" fill="#161616"/>
+  <text x="20" y="76" font-family="monospace" font-size="15" fill="#e8e8e8">Scan Item</text>
+
+  <!-- Divider -->
+  <rect y="96" width="390" height="1" fill="#222222"/>
+
+  <!-- Instruction text -->
+  <text x="195" y="148" font-family="monospace" font-size="12" fill="#555555" text-anchor="middle">Point camera at QR code</text>
+
+  <!-- QR viewfinder -->
+  <rect x="75" y="168" width="240" height="240" rx="4" fill="#0a0a0a"/>
+
+  <!-- Corner brackets -->
+  <!-- Top-left -->
+  <path d="M 95 188 L 75 188 L 75 208" stroke="#00d9b8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Top-right -->
+  <path d="M 295 188 L 315 188 L 315 208" stroke="#00d9b8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Bottom-left -->
+  <path d="M 95 388 L 75 388 L 75 368" stroke="#00d9b8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Bottom-right -->
+  <path d="M 295 388 L 315 388 L 315 368" stroke="#00d9b8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Scan line -->
+  <rect x="85" y="284" width="220" height="1.5" fill="#00d9b8" opacity="0.7"/>
+  <rect x="85" y="278" width="220" height="14" fill="url(#scanGlow)" opacity="0.15"/>
+  <defs>
+    <linearGradient id="scanGlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00d9b8" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00d9b8" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#00d9b8" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- QR code pattern (simplified) -->
+  <rect x="110" y="200" width="40" height="40" rx="2" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+  <rect x="116" y="206" width="12" height="12" rx="1" fill="#444"/>
+  <rect x="132" y="206" width="12" height="12" rx="1" fill="#444"/>
+  <rect x="116" y="222" width="12" height="12" rx="1" fill="#444"/>
+  <rect x="132" y="222" width="12" height="12" rx="1" fill="#222"/>
+
+  <rect x="240" y="200" width="40" height="40" rx="2" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+  <rect x="246" y="206" width="12" height="12" rx="1" fill="#444"/>
+  <rect x="262" y="206" width="12" height="12" rx="1" fill="#222"/>
+  <rect x="246" y="222" width="12" height="12" rx="1" fill="#222"/>
+  <rect x="262" y="222" width="12" height="12" rx="1" fill="#444"/>
+
+  <rect x="110" y="328" width="40" height="40" rx="2" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+  <rect x="116" y="334" width="12" height="12" rx="1" fill="#444"/>
+  <rect x="132" y="334" width="12" height="12" rx="1" fill="#222"/>
+  <rect x="116" y="350" width="12" height="12" rx="1" fill="#222"/>
+  <rect x="132" y="350" width="12" height="12" rx="1" fill="#444"/>
+
+  <!-- Last scanned -->
+  <rect x="16" y="432" width="358" height="70" rx="4" fill="#161616" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="32" y="454" font-family="monospace" font-size="10" fill="#555555">Last scanned</text>
+  <text x="32" y="474" font-family="monospace" font-size="13" fill="#e8e8e8">Engine Oil Filter — SKU #4821</text>
+  <text x="32" y="490" font-family="monospace" font-size="10" fill="#555555">Added to RO-2847</text>
+
+  <!-- Manual entry button -->
+  <rect x="16" y="518" width="358" height="44" rx="4" fill="#161616" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="195" y="544" font-family="monospace" font-size="12" fill="#555555" text-anchor="middle">Enter code manually</text>
+
+  <!-- Bottom nav -->
+  <rect y="792" width="390" height="52" fill="#111111" stroke="#222222" stroke-width="1"/>
+  <text x="50" y="823" font-family="monospace" font-size="10" fill="#555555">Orders</text>
+  <text x="162" y="823" font-family="monospace" font-size="10" fill="#00d9b8">Scan</text>
+  <text x="272" y="823" font-family="monospace" font-size="10" fill="#555555">Reports</text>
+</svg>

@@ -1,0 +1,63 @@
+<svg width="390" height="844" viewBox="0 0 390 844" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="390" height="844" fill="#0d0d0d"/>
+
+  <!-- Status bar -->
+  <rect width="390" height="44" fill="#111111"/>
+  <text x="20" y="28" font-family="monospace" font-size="12" fill="#888888">9:41</text>
+  <rect x="330" y="16" width="42" height="12" rx="3" fill="#333333"/>
+  <rect x="332" y="18" width="30" height="8" rx="2" fill="#00d9b8" opacity="0.6"/>
+
+  <!-- Nav bar -->
+  <rect y="44" width="390" height="52" fill="#161616"/>
+  <text x="20" y="76" font-family="monospace" font-size="15" fill="#e8e8e8">Repair Orders</text>
+  <rect x="340" y="58" width="32" height="24" rx="4" fill="#00d9b8" opacity="0.15"/>
+  <text x="350" y="74" font-family="monospace" font-size="14" fill="#00d9b8">+</text>
+
+  <!-- Divider -->
+  <rect y="96" width="390" height="1" fill="#222222"/>
+
+  <!-- Filter tabs -->
+  <text x="20" y="122" font-family="monospace" font-size="11" fill="#00d9b8">All</text>
+  <rect x="14" y="126" width="24" height="1.5" rx="1" fill="#00d9b8"/>
+  <text x="58" y="122" font-family="monospace" font-size="11" fill="#555555">Open</text>
+  <text x="104" y="122" font-family="monospace" font-size="11" fill="#555555">Closed</text>
+
+  <!-- Order card 1 -->
+  <rect x="16" y="140" width="358" height="80" rx="4" fill="#161616" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="32" y="163" font-family="monospace" font-size="11" fill="#888888">#RO-2847</text>
+  <rect x="316" y="150" width="44" height="18" rx="3" fill="#00d9b8" opacity="0.12"/>
+  <text x="322" y="163" font-family="monospace" font-size="9" fill="#00d9b8">Open</text>
+  <text x="32" y="182" font-family="monospace" font-size="13" fill="#e8e8e8">Honda Civic 2019</text>
+  <text x="32" y="200" font-family="monospace" font-size="10" fill="#555555">Oil change · Brake inspection</text>
+
+  <!-- Order card 2 -->
+  <rect x="16" y="232" width="358" height="80" rx="4" fill="#161616" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="32" y="255" font-family="monospace" font-size="11" fill="#888888">#RO-2846</text>
+  <rect x="304" y="242" width="56" height="18" rx="3" fill="#555555" opacity="0.2"/>
+  <text x="310" y="255" font-family="monospace" font-size="9" fill="#888888">In Progress</text>
+  <text x="32" y="274" font-family="monospace" font-size="13" fill="#e8e8e8">Toyota Avanza 2021</text>
+  <text x="32" y="292" font-family="monospace" font-size="10" fill="#555555">Engine diagnostic</text>
+
+  <!-- Order card 3 -->
+  <rect x="16" y="324" width="358" height="80" rx="4" fill="#161616" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="32" y="347" font-family="monospace" font-size="11" fill="#888888">#RO-2845</text>
+  <rect x="310" y="334" width="50" height="18" rx="3" fill="#333333"/>
+  <text x="316" y="347" font-family="monospace" font-size="9" fill="#666666">Closed</text>
+  <text x="32" y="366" font-family="monospace" font-size="13" fill="#888888">Suzuki Ertiga 2020</text>
+  <text x="32" y="384" font-family="monospace" font-size="10" fill="#444444">Tire rotation · Alignment</text>
+
+  <!-- Order card 4 -->
+  <rect x="16" y="416" width="358" height="80" rx="4" fill="#161616" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="32" y="439" font-family="monospace" font-size="11" fill="#888888">#RO-2844</text>
+  <rect x="316" y="426" width="44" height="18" rx="3" fill="#00d9b8" opacity="0.12"/>
+  <text x="322" y="439" font-family="monospace" font-size="9" fill="#00d9b8">Open</text>
+  <text x="32" y="458" font-family="monospace" font-size="13" fill="#e8e8e8">Mitsubishi Xpander</text>
+  <text x="32" y="476" font-family="monospace" font-size="10" fill="#555555">Full service · AC recharge</text>
+
+  <!-- Bottom nav -->
+  <rect y="792" width="390" height="52" fill="#111111" stroke="#222222" stroke-width="1"/>
+  <text x="50" y="823" font-family="monospace" font-size="10" fill="#00d9b8">Orders</text>
+  <text x="162" y="823" font-family="monospace" font-size="10" fill="#555555">Scan</text>
+  <text x="272" y="823" font-family="monospace" font-size="10" fill="#555555">Reports</text>
+</svg>

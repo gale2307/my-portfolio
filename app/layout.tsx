@@ -59,8 +59,8 @@ export default function RootLayout({
               jobTitle: 'Software Engineer',
               description: '',
               sameAs: [
-                'https://github.com/nichowil',
-                'https://linkedin.com/in/nichowil',
+                'https://github.com/gale2307',
+                'https://www.linkedin.com/in/nicholas-hadiwijaya-7gh6/',
               ],
             }),
           }}

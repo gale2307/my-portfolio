@@ -1,0 +1,77 @@
+<svg width="390" height="844" viewBox="0 0 390 844" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="390" height="844" fill="#0d0d0d"/>
+
+  <!-- Status bar -->
+  <rect width="390" height="44" fill="#111111"/>
+  <text x="20" y="28" font-family="monospace" font-size="12" fill="#888888">9:41</text>
+  <rect x="330" y="16" width="42" height="12" rx="3" fill="#333333"/>
+  <rect x="332" y="18" width="30" height="8" rx="2" fill="#00d9b8" opacity="0.6"/>
+
+  <!-- Nav bar -->
+  <rect y="44" width="390" height="52" fill="#161616"/>
+  <text x="20" y="76" font-family="monospace" font-size="15" fill="#e8e8e8">Field Report</text>
+  <rect x="326" y="56" width="48" height="28" rx="4" fill="#00d9b8" opacity="0.15"/>
+  <text x="334" y="74" font-family="monospace" font-size="11" fill="#00d9b8">Print</text>
+
+  <!-- Divider -->
+  <rect y="96" width="390" height="1" fill="#222222"/>
+
+  <!-- Report header section -->
+  <rect x="16" y="112" width="358" height="90" rx="4" fill="#161616" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="32" y="136" font-family="monospace" font-size="10" fill="#555555">Report #</text>
+  <text x="32" y="154" font-family="monospace" font-size="14" fill="#e8e8e8">FR-2847-A</text>
+  <text x="200" y="136" font-family="monospace" font-size="10" fill="#555555">Date</text>
+  <text x="200" y="154" font-family="monospace" font-size="14" fill="#e8e8e8">23 Jun 2026</text>
+  <text x="32" y="178" font-family="monospace" font-size="10" fill="#555555">Vehicle: Honda Civic 2019 · B 4821 XYZ</text>
+
+  <!-- Services performed -->
+  <text x="20" y="224" font-family="monospace" font-size="10" fill="#555555" letter-spacing="2">SERVICES PERFORMED</text>
+  <rect x="16" y="232" width="358" height="1" fill="#222222"/>
+
+  <!-- Service row 1 -->
+  <text x="20" y="258" font-family="monospace" font-size="12" fill="#e8e8e8">Engine Oil Change</text>
+  <text x="320" y="258" font-family="monospace" font-size="12" fill="#e8e8e8" text-anchor="end">Rp 85.000</text>
+  <text x="20" y="274" font-family="monospace" font-size="10" fill="#555555">Castrol 5W-30 4L · Filter SKU #4821</text>
+  <rect x="16" y="282" width="358" height="1" fill="#1e1e1e"/>
+
+  <!-- Service row 2 -->
+  <text x="20" y="304" font-family="monospace" font-size="12" fill="#e8e8e8">Brake Inspection</text>
+  <text x="320" y="304" font-family="monospace" font-size="12" fill="#e8e8e8" text-anchor="end">Rp 50.000</text>
+  <text x="20" y="320" font-family="monospace" font-size="10" fill="#555555">Front + rear pads checked</text>
+  <rect x="16" y="328" width="358" height="1" fill="#1e1e1e"/>
+
+  <!-- Service row 3 -->
+  <text x="20" y="350" font-family="monospace" font-size="12" fill="#e8e8e8">Fluid Top-up</text>
+  <text x="320" y="350" font-family="monospace" font-size="12" fill="#e8e8e8" text-anchor="end">Rp 25.000</text>
+  <text x="20" y="366" font-family="monospace" font-size="10" fill="#555555">Coolant + windshield washer</text>
+  <rect x="16" y="374" width="358" height="1" fill="#222222"/>
+
+  <!-- Total -->
+  <text x="20" y="398" font-family="monospace" font-size="11" fill="#555555">Subtotal</text>
+  <text x="320" y="398" font-family="monospace" font-size="11" fill="#888888" text-anchor="end">Rp 160.000</text>
+  <text x="20" y="420" font-family="monospace" font-size="11" fill="#555555">Tax (11%)</text>
+  <text x="320" y="420" font-family="monospace" font-size="11" fill="#888888" text-anchor="end">Rp 17.600</text>
+  <rect x="16" y="430" width="358" height="1" fill="#2a2a2a"/>
+  <text x="20" y="452" font-family="monospace" font-size="14" fill="#e8e8e8">Total</text>
+  <text x="320" y="452" font-family="monospace" font-size="14" fill="#00d9b8" text-anchor="end">Rp 177.600</text>
+
+  <!-- Notes section -->
+  <text x="20" y="486" font-family="monospace" font-size="10" fill="#555555" letter-spacing="2">TECHNICIAN NOTES</text>
+  <rect x="16" y="494" width="358" height="60" rx="4" fill="#161616" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="32" y="514" font-family="monospace" font-size="10" fill="#666666">Front brake pads at 40% — recommend</text>
+  <text x="32" y="530" font-family="monospace" font-size="10" fill="#666666">replacement within 5,000 km.</text>
+
+  <!-- Print + Share buttons -->
+  <rect x="16" y="572" width="170" height="44" rx="4" fill="#00d9b8" opacity="0.12" stroke="#00d9b8" stroke-width="0.5" stroke-opacity="0.3"/>
+  <text x="101" y="598" font-family="monospace" font-size="12" fill="#00d9b8" text-anchor="middle">Print Receipt</text>
+
+  <rect x="204" y="572" width="170" height="44" rx="4" fill="#161616" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="289" y="598" font-family="monospace" font-size="12" fill="#888888" text-anchor="middle">Share PDF</text>
+
+  <!-- Bottom nav -->
+  <rect y="792" width="390" height="52" fill="#111111" stroke="#222222" stroke-width="1"/>
+  <text x="50" y="823" font-family="monospace" font-size="10" fill="#555555">Orders</text>
+  <text x="162" y="823" font-family="monospace" font-size="10" fill="#555555">Scan</text>
+  <text x="272" y="823" font-family="monospace" font-size="10" fill="#00d9b8">Reports</text>
+</svg>
