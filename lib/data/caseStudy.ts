@@ -18,7 +18,7 @@ export const caseStudy: CaseStudyData = {
   project: 'Internal Mobile App Rebuild',
   tags: ['React Native', 'Expo', 'Mobile'],
   problem:
-    "Their internal mobile app had no surviving codebase after the original engineer left. The app was running in production but completely unmaintainable — any change required rebuilding from scratch.",
+    "Their internal mobile app had no surviving codebase after the original engineer left. The app was running in production but completely unmaintainable - any change required rebuilding from scratch.",
   approach:
     "Reverse-engineered the production APK to recover the app's structure and data flows, then rebuilt the entire application from scratch in Expo and React Native.",
   outcome:

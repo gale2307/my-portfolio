@@ -22,13 +22,23 @@ export const testimonials: TestimonialItem[] = [
     source: 'linkedin',
   },
   {
-    id: 'Teguh W Utama',
+    id: 'teguh-utama',
     quote:
       'Nicholas delivered beyond our expectations on a server migration project, moving us to a newer cloud VPS with minimal disruption. What stood out was how clearly he communicated at every stage - the planning and design process was straightforward to follow throughout. We\'re already planning to work with him again.',
     name: 'Teguh Utama',
-    title: 'CEO',
+    title: 'Co-Founder',
     company: 'Autoparts',
     photo: '/images/testimonials/teguh-utama.jpg',
+    source: 'direct',
+  },
+  {
+    id: 'teguh-wibowo',
+    quote:
+      'When our last engineer left, we found that we had no source code for our internal mobile app. Nicholas stepped in, rebuilt the entire app from scratch, and delivered it with new features our team had been wanting for years. It was a crisis turned into an upgrade.',
+    name: 'Teguh Wibowo',
+    title: 'CEO',
+    company: 'Autoservice',
+    photo: '/images/testimonials/teguh-wibowo.jpg',
     source: 'direct',
   },
 ];

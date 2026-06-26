@@ -22,14 +22,14 @@ export function About() {
           <div className="flex flex-wrap gap-6 mt-12">
             {employers.map((employer, index) => (
               <div key={employer.name} className="flex items-center gap-6">
-                <div className="flex flex-col items-start gap-1">
+                <div className="group flex flex-col items-start gap-1 cursor-default transition-transform duration-200 hover:scale-105">
                   {employer.logo ? (
                     <Image
                       src={employer.logo}
                       alt={employer.name}
                       width={100}
                       height={28}
-                      className="h-7 w-auto"
+                      className="h-7 w-auto transition-all duration-200"
                       style={{
                         filter: employer.current
                           ? 'opacity(0.9)'
@@ -38,13 +38,16 @@ export function About() {
                     />
                   ) : (
                     <span
-                      className="font-mono text-sm font-medium tracking-wide"
-                      style={{ color: employer.current ? '#888888' : '#555555' }}
+                      className={`font-mono text-sm font-medium tracking-wide transition-colors duration-200 ${
+                        employer.current
+                          ? 'text-[#888888] group-hover:text-[#b0b0b0]'
+                          : 'text-[#555555] group-hover:text-[#888888]'
+                      }`}
                     >
                       {employer.name}
                     </span>
                   )}
-                  <span className="font-mono text-[10px] text-[#444444] tracking-widest uppercase">
+                  <span className="font-mono text-[10px] text-[#444444] tracking-widest uppercase transition-colors duration-200 group-hover:text-[#777777]">
                     {employer.role}
                   </span>
                 </div>
