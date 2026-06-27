@@ -34,7 +34,7 @@ export const testimonials: TestimonialItem[] = [
   {
     id: 'teguh-wibowo',
     quote:
-      'When our last engineer left, we found that we had no source code for our internal mobile app. Nicholas stepped in, rebuilt the entire app from scratch, and delivered it with new features our team had been wanting for years. It was a crisis turned into an upgrade.',
+      'When our last engineer left, we found that we had no source code for our internal mobile app. Nicholas stepped in, rebuilt the entire app from scratch, and delivered it with new features our team had been wanting for years. Looking to get him again for our next project',
     name: 'Teguh Wibowo',
     title: 'CEO',
     company: 'Autoservice',
