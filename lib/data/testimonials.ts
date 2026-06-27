@@ -38,7 +38,7 @@ export const testimonials: TestimonialItem[] = [
     name: 'Teguh Wibowo',
     title: 'CEO',
     company: 'Autoservice',
-    photo: '/images/testimonials/teguh-wibowo.jpg',
+    photo: '/images/testimonials/teguh-wibowo.jpeg',
     source: 'direct',
   },
 ];
